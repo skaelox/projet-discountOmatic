@@ -12,25 +12,25 @@ import javax.persistence.Version;
 
 @Entity
 public class Category {
-    
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "customer_id")
-    private long customeId;
-    @Column(name = "customer_name")
-    private String name;
-    @Column(name = "customer_description")
-    private String description;
-    
-    @ManyToMany
-    private List<Article> articles;
-    
-    @Version
-    private int version;
-    
-    public Category() {
-    	
-    }
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "customer_id")
+	private long customeId;
+	@Column(name = "customer_name")
+	private String name;
+	@Column(name = "customer_description")
+	private String description;
+
+	@ManyToMany
+	private List<Article> articles;
+
+	@Version
+	private int version;
+
+	public Category() {
+
+	}
 
 	public Category(long customeId, String name, String description, List<Article> articles) {
 		this.customeId = customeId;
@@ -70,5 +70,5 @@ public class Category {
 	public void setArticles(List<Article> articles) {
 		this.articles = articles;
 	}
- 
+
 }
