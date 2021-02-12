@@ -6,38 +6,42 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import javax.persistence.Version;
 
 @Entity
 public class Supplier {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	
+
 	@Column(name = "supplier_id")
 	private long supplierId;
-	
+
 	@Column(name = "supplier_first_name")
 	private String firstName;
-	
+
 	@Column(name = "supplier_last_name")
 	private String lastName;
-	
+
 	@Column(name = "supplier_siret_number")
 	private int siret;
-	
+
 	@Column(name = "supplier_phone_number")
 	private int phoneNumber;
-	
+
 	@Column(name = "supplier_password")
 	private String password;
-	
+
 	@Column(name = "supplier_mail")
 	private String mail;
 	
+	@Version
+	private int version;
+
 	@OneToOne
 	private Address address;
-	
 
+	
 	public Supplier(long supplierId, String firstName, String lastName, int siret, int phoneNumber, String password,
 			String mail) {
 		super();
@@ -118,10 +122,4 @@ public class Supplier {
 		this.address = address;
 	}
 
-	
-	
-	
-	
-	
-	
 }

@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import javax.persistence.Version;
 
 @Entity
 public class Address {
@@ -27,6 +28,9 @@ public class Address {
 	
 	@Column(name = "address_country")
 	private String country;
+	
+	@Version
+	private int version;
 
 	public Address() {
 		super();
