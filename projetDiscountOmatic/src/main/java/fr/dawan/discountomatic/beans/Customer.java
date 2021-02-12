@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.Version;
 
 @Entity
 public class Customer {
@@ -102,7 +103,9 @@ public class Customer {
         this.address = address;
     }
     
-
+    @Version
+    private int version;
+    
     public Customer() {
         super();
     }
