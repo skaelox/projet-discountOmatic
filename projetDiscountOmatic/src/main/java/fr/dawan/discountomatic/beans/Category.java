@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.Version;
 
 @Entity
 public class Category {
@@ -23,6 +24,9 @@ public class Category {
     
     @ManyToMany
     private List<Article> articles;
+    
+    @Version
+    private int version;
     
     public Category() {
     	
@@ -66,8 +70,5 @@ public class Category {
 	public void setArticles(List<Article> articles) {
 		this.articles = articles;
 	}
-	
-	 
-
-   
+ 
 }

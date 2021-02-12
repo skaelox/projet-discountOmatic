@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.Version;
 
 
 @Entity
@@ -32,6 +33,9 @@ public class Article {
 	@ManyToMany(mappedBy = "articles", cascade = CascadeType.ALL)
 	@Column(name = "article_category")
 	private List<Category> categories;
+	
+	@Version
+	private int version;
 	
 	public Article() {
 		
@@ -90,8 +94,5 @@ public class Article {
 	public void setCategories(List<Category> categories) {
 		this.categories = categories;
 	}
-
-	
-	
 	
 }
