@@ -1,14 +1,126 @@
 package fr.dawan.discountomatic.beans;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Customer {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long customer_id;
+    @Column(name = "customer_id")
+    private long customerId;
+    
+    @Column(name = "customer_first_name")
+    private String firstName;
+    
+    @Column(name = "customer_last_name")
+    private String lastName;
+    
+    @Column(name = "customer_phone_number")
+    private int phoneNumber;
+    
+    @Column(name = "customer_password")
+    private String password;
+    
+    @Column(name = "customer_mail")
+    private String mail;
+    
+    @Column(name = "customer_gender")
+    private String gender;
+    
+    @OneToOne(optional = false)
+    @JoinColumn(name = "address_id", unique = true, nullable = false, updatable = false)
+    private Address address;    
+    
+    public long getCustomerId() {
+        return customerId;
+    }
+
+    public void setCustomerId(long customerId) {
+        this.customerId = customerId;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public int getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(int phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getMail() {
+        return mail;
+    }
+
+    public void setMail(String mail) {
+        this.mail = mail;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+    
+
+    public Customer() {
+        super();
+    }
+
+    public Customer(long customerId, String firstName, String lastName, int phoneNumber, String password, String mail,
+            String gender, Address address) {
+        super();
+        this.customerId = customerId;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.phoneNumber = phoneNumber;
+        this.password = password;
+        this.mail = mail;
+        this.gender = gender;
+        this.address = address;
+    }
+
+
+    
+    
 }
