@@ -7,13 +7,13 @@ import fr.dawan.discountomatic.dto.CustomerDto;
 
 public class CustomerMapper {
     
-    private ModelMapper mapper;
+    private static ModelMapper mapper;
     
     public CustomerMapper() {
         mapper = new ModelMapper();
     }
     
-    public CustomerDto toDto(Customer c) {
+    public static CustomerDto toDto(Customer c) {
         mapper.typeMap(CustomerDto.class, CustomerDto.class).addMappings(mapper -> {
            mapper.map(src->src.getFirstName(), CustomerDto::setFirstName);
            mapper.map(src->src.getLastName(), CustomerDto::setLastName);
@@ -26,7 +26,7 @@ public class CustomerMapper {
         return mapper.map(c, CustomerDto.class);
     }
         
-    public Customer fromDto(Customer cDto) {
+    public static Customer fromDto(Customer cDto) {
         mapper.typeMap(CustomerDto.class, Customer.class).addMappings(mapper -> {
             mapper.map(src->src.getFirstName(), Customer::setFirstName);
             mapper.map(src->src.getLastName(), Customer::setLastName);
