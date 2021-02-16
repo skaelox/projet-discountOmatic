@@ -4,8 +4,11 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import javax.transaction.Transactional;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import fr.dawan.discountomatic.beans.Article;
 import fr.dawan.discountomatic.beans.Category;
@@ -24,6 +27,8 @@ import fr.dawan.discountomatic.repositories.CategoryRepository;
 import fr.dawan.discountomatic.repositories.CustomerRepository;
 import fr.dawan.discountomatic.repositories.SupplierRepository;
 
+@Service
+@Transactional
 public class AdminServiceImpl implements AdminService{
 	@Autowired
 	ArticleRepository articleRepository;
@@ -46,8 +51,9 @@ public class AdminServiceImpl implements AdminService{
 	}
 
 	@Override
-	public void deleteArticleById(long id) {
-		articleRepository.deleteById(id);
+	public void deleteArticleById(ArticleDto a) {
+		Article res = articleRepository.findArticleByName(a.getName());;
+		articleRepository.deleteById(res.getArticleId());
 		
 	}
 
@@ -71,8 +77,9 @@ public class AdminServiceImpl implements AdminService{
 	}
 
 	@Override
-	public void deleteCategoryById(long id) {
-		categoryRepository.deleteById(id);
+	public void deleteCategoryById(CategoryDto cDto) {
+		Category res = categoryRepository.findCategoryByName(cDto.getName());
+		categoryRepository.deleteById(res.getCategoryId());
 		
 	}
 
@@ -96,7 +103,9 @@ public class AdminServiceImpl implements AdminService{
 	}
 
 	@Override
-	public void deleteCustomerById(long id) {
+	public void deleteCustomerById(CustomerDto cDto) {
+		//TODO cfaire appel à la future methode search by name
+		long id =0;
 		customerRepository.deleteById(id);
 		
 	}
@@ -121,7 +130,8 @@ public class AdminServiceImpl implements AdminService{
 	}
 
 	@Override
-	public void deleteSupplierById(long id) {
+	public void deleteSupplierById(SupplierDto sDto) {
+		long id = 0;
 		supplierRepository.deleteById(id);
 		
 	}
