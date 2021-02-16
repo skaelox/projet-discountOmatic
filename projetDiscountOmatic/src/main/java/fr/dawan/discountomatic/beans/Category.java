@@ -15,11 +15,11 @@ public class Category {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "customer_id")
-	private long customeId;
-	@Column(name = "customer_name")
+	@Column(name = "category_id")
+	private long categoryId;
+	@Column(name = "category_name")
 	private String name;
-	@Column(name = "customer_description")
+	@Column(name = "category_description")
 	private String description;
 
 	@ManyToMany
@@ -32,19 +32,29 @@ public class Category {
 
 	}
 
-	public Category(long customeId, String name, String description, List<Article> articles) {
-		this.customeId = customeId;
+	public Category(long categoryId, String name, String description, List<Article> articles, int version) {
+		super();
+		this.categoryId = categoryId;
 		this.name = name;
 		this.description = description;
 		this.articles = articles;
+		this.version = version;
 	}
 
-	public long getCustomeId() {
-		return customeId;
+	public long getCategoryId() {
+		return categoryId;
 	}
 
-	public void setCustomeId(long customeId) {
-		this.customeId = customeId;
+	public void setCategoryId(long categoryId) {
+		this.categoryId = categoryId;
+	}
+
+	public int getVersion() {
+		return version;
+	}
+
+	public void setVersion(int version) {
+		this.version = version;
 	}
 
 	public String getName() {
