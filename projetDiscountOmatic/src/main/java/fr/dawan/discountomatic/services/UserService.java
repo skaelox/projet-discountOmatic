@@ -13,5 +13,7 @@ public interface UserService {
     List<CategoryDto> getAllCategory();
     
     CustomerDto findAllByMailAndPassword(String mail, String password);
+    
+    void deleteByMail(CustomerDto cDto);
 }
 

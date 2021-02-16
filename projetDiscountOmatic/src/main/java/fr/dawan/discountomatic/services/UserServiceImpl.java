@@ -59,4 +59,11 @@ public class UserServiceImpl implements UserService{
         return m.map(res, CustomerDto.class);
     }
 
+    @Override
+    public void deleteByMail(CustomerDto cDto) {
+        Customer res = customerRepository.findByMail(cDto.getMail());
+        customerRepository.deleteById(res.getCustomerId());
+        
+    }
+
 }

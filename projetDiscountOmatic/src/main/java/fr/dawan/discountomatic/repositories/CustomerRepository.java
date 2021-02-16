@@ -12,5 +12,8 @@ public interface CustomerRepository extends JpaRepository<Customer, Long>{
 
     @Query(value = "FROM Customer a WHERE a.mail LIKE :searchMail AND a.password LIKE :searchPwd")
     Customer findAllByMailAndPassword(@Param("searchMail") String searchMail, @Param("searchPwd") String searchPwd);
+    
+    @Query(value = "FROM Customer a WHERE a.mail LIKE :searchMail")
+    Customer findByMail(@Param("searchMail") String searchMail);
 
 }
