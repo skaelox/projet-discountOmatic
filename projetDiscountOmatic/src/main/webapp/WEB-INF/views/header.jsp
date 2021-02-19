@@ -26,9 +26,12 @@
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav mr-auto">
 				<li class="nav-item"><a class="nav-link" href='#'>test</a></li>
-				<li class="nav-item"><a class="nav-link" href='#'>Home</a></li>
+				<li class="nav-item"><a class="nav-link" href='home'>Home</a></li>
 				<li class="nav-item"><a class="nav-link" href='#'>Category</a></li>
-				<li class="nav-item"><a class="nav-link" href='#'>Login</a></li>
+				<li class="nav-item"><a class="nav-link" href='login'>Login</a></li>
+				<li class="nav-item"><a class="nav-link" href='inscription'>Inscription</a></li>
+				<li class="nav-item"><a class="nav-link" href='profile'>Profile</a></li>
+				
 				
 			</ul>
 
