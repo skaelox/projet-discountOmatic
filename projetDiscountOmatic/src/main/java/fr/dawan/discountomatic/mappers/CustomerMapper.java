@@ -15,6 +15,7 @@ public class CustomerMapper {
     
     public static CustomerDto toDto(Customer c) {
         mapper.typeMap(CustomerDto.class, CustomerDto.class).addMappings(mapper -> {
+            mapper.map(src->src.getCustomerId(), CustomerDto::setCustomerId);
            mapper.map(src->src.getFirstName(), CustomerDto::setFirstName);
            mapper.map(src->src.getLastName(), CustomerDto::setLastName);
            mapper.map(src->src.getPhoneNumber(), CustomerDto::setPhoneNumber);
@@ -28,6 +29,7 @@ public class CustomerMapper {
         
     public static Customer fromDto(Customer cDto) {
         mapper.typeMap(CustomerDto.class, Customer.class).addMappings(mapper -> {
+            mapper.map(src->src.getCustomerId(), Customer::setCustomerId);
             mapper.map(src->src.getFirstName(), Customer::setFirstName);
             mapper.map(src->src.getLastName(), Customer::setLastName);
             mapper.map(src->src.getPhoneNumber(), Customer::setPhoneNumber);
