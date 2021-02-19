@@ -15,5 +15,6 @@ public interface CustomerRepository extends JpaRepository<Customer, Long>{
     
     @Query(value = "FROM Customer a WHERE a.mail LIKE :searchMail")
     Customer findByMail(@Param("searchMail") String searchMail);
+    
 
 }

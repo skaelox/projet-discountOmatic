@@ -6,6 +6,8 @@ import java.io.Serializable;
 public class CustomerDto implements Serializable{
 
     private static final long serialVersionUID = 1L;
+    
+    private long customerId;
 
     private String firstName;
 
@@ -17,8 +19,15 @@ public class CustomerDto implements Serializable{
 
     private String mail;
     
-    private String gender;
-    
+    private String gender;    
+
+    public long getCustomerId() {
+        return customerId;
+    }
+
+    public void setCustomerId(long customerId) {
+        this.customerId = customerId;
+    }
 
     public String getFirstName() {
         return firstName;
@@ -72,9 +81,10 @@ public class CustomerDto implements Serializable{
         super();
     }
 
-    public CustomerDto(String firstName, String lastName, int phoneNumber, String password, String mail,
+    public CustomerDto(long customerId, String firstName, String lastName, int phoneNumber, String password, String mail,
             String gender) {
         super();
+        this.customerId = customerId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
