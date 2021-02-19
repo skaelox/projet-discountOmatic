@@ -4,7 +4,8 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
-public class UpdateAccountForm {
+
+public class CreateAccountForm {
     @NotEmpty
     @Size(min = 2, max = 50)
     private String prenom;
@@ -33,11 +34,11 @@ public class UpdateAccountForm {
     @Size(min = 2, max = 40)
     private String phone_number;
     
-    public UpdateAccountForm() {
+    public CreateAccountForm() {
         
     }
 
-    public UpdateAccountForm(@NotEmpty @Size(min = 2, max = 50) String prenom,
+    public CreateAccountForm(@NotEmpty @Size(min = 2, max = 50) String prenom,
             @NotEmpty @Size(min = 2, max = 50) String nom,
             @NotEmpty(message = "{login.email.notempty}") @Email String email,
             @NotEmpty(message = "{login.email.notempty}") @Email String confirm_email,
