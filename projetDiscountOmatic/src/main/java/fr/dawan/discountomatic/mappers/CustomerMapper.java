@@ -14,7 +14,7 @@ public class CustomerMapper {
     }
     
     public static CustomerDto toDto(Customer c) {
-        mapper.typeMap(CustomerDto.class, CustomerDto.class).addMappings(mapper -> {
+        mapper.typeMap(Customer.class, CustomerDto.class).addMappings(mapper -> {
             mapper.map(src->src.getCustomerId(), CustomerDto::setCustomerId);
            mapper.map(src->src.getFirstName(), CustomerDto::setFirstName);
            mapper.map(src->src.getLastName(), CustomerDto::setLastName);
@@ -22,12 +22,11 @@ public class CustomerMapper {
            mapper.map(src->src.getPassword(), CustomerDto::setPassword);
            mapper.map(src->src.getMail(), CustomerDto::setMail);
            mapper.map(src->src.getGender(), CustomerDto::setGender);
-           //TODO à rajouter le getAddress() => voir avec Hugo
         });
         return mapper.map(c, CustomerDto.class);
     }
         
-    public static Customer fromDto(Customer cDto) {
+    public static Customer fromDto(CustomerDto cDto) {
         mapper.typeMap(CustomerDto.class, Customer.class).addMappings(mapper -> {
             mapper.map(src->src.getCustomerId(), Customer::setCustomerId);
             mapper.map(src->src.getFirstName(), Customer::setFirstName);
@@ -36,7 +35,6 @@ public class CustomerMapper {
             mapper.map(src->src.getPassword(), Customer::setPassword);
             mapper.map(src->src.getMail(), Customer::setMail);
             mapper.map(src->src.getGender(), Customer::setGender);
-            //TODO à rajouter le getAddress() => voir avec Hugo
         });
         return mapper.map(cDto, Customer.class);
     }

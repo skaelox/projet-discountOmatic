@@ -37,7 +37,7 @@ public class UserController {
     }
     
     @GetMapping(value="/find")
-    public CustomerDto findBy(@RequestParam(name = "mail", required = true) String mail, 
+    public CustomerDto findAllByMailAndPassword(@RequestParam(name = "mail", required = true) String mail, 
             @RequestParam(name = "password", required = true) String password){
         return userService.findAllByMailAndPassword(mail, password);
     }
