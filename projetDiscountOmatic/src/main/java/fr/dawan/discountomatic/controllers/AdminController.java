@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import fr.dawan.discountomatic.dto.ArticleDto;
@@ -32,6 +33,11 @@ public class AdminController {
 	@GetMapping(value = "/article", produces = "application/json")
 	public List<ArticleDto> getAllArticle() {
 		return adminService.getAllArticle();
+	}
+	
+	@GetMapping(value = "/",produces = "application/json")
+    public ArticleDto getArticleById(@RequestParam long id) {
+	    return adminService.findArticleById(id);
 	}
 	
 	@PostMapping(value = "/article", consumes = "application/json" , produces = "application/json")
@@ -65,7 +71,7 @@ public class AdminController {
 	@GetMapping(value = "/category", produces = "application/json")
 	public List<CategoryDto> getAllCategory() {
 		return adminService.getAllCategory();
-	}
+	} 
 	
 	@PostMapping(value = "/category", consumes = "application/json" , produces = "application/json")
 	public CategoryDto saveCategory(@RequestBody CategoryDto cDto) {

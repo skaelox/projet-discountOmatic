@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
+import fr.dawan.discountomatic.beans.Article;
 import fr.dawan.discountomatic.beans.Customer;
 import fr.dawan.discountomatic.dto.ArticleDto;
 import fr.dawan.discountomatic.dto.CustomerDto;
@@ -30,6 +32,9 @@ public class ViewController {
     
     @Autowired
     private UserController userController;
+    
+    @Autowired
+    private AdminController adminController;
     
     @GetMapping("/")
     public String homePage(Model m) {
@@ -83,9 +88,15 @@ public class ViewController {
         return "profile";
     }
     
-    @GetMapping("/detail")
-    public String showArticle(Model m) {
-        return "details";
+    @GetMapping("/showarticle")
+    public String showArticle(@RequestParam long id, Model m) {
+        ArticleDto article = adminController.getArticleById(id);
+        if(article != null ) {
+            m.addAttribute(article);            
+            return "details";
+        }
+        m.addAttribute("error", "Article Introuvable");
+        return "/";
     }
     
     @PostMapping("/addcart")
