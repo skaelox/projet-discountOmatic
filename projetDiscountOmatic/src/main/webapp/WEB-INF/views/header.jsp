@@ -33,11 +33,21 @@
 		<button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 		  Profile
 		</button>
-			<div class="dropdown-menu" aria-labelledby="dropdownMenuButton"> 
+			<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+			<c:if test="${!empty sessionScope.isConnected && !sessionScope.isConnected}">
 		        <a class="dropdown-item" href='login'>Login</a>
 		        <a class="dropdown-item" href='subcribe'>Inscription</a>
-		        <a class=dropdown-item href='account'>Voir mon profile</a>   
+		        <a class=dropdown-item href='account'>Logout</a>
+		        </c:if>
+		        <c:if test="${!empty sessionScope.isConnected && sessionScope.isConnected}">
+		        <p>${user.name}</p>
+                <a class=dropdown-item href='#'>Voir mon profile</a>
+                <a class=dropdown-item href='#'>Logout</a>
+                <a class=dropdown-item href='#'>Voir mon profile</a>
+                </c:if>
 			</div>
+		
+		
 		</div>
 	</header>
 	<main class="container-fluid">
