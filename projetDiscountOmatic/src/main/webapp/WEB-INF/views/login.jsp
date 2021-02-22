@@ -14,13 +14,13 @@
 	<div class="form-check" id="container">	
 		<div class="form-group">
 			<form:label path="email">Adresse e-mail</form:label> 
-			<form:input class="form-control" type="email" placeholder="Entrer votre adresse mail" name="mail" required/>
+			<form:input class="form-control" path="email" type="email" placeholder="Entrer votre adresse mail" name="mail"/>
 			<form:errors class="text-danger small" path="email"/>
 		</div>
 		
 		<div class="form-group">
-			<form:label>Mot de passe</form:label> 
-			<form:input class="form-control" type="password" placeholder="Entrer le mot de passe" name="password" required/>
+			<form:label path="password">Mot de passe</form:label> 
+			<form:input class="form-control" path="password" type="password" placeholder="Entrer le mot de passe" name="password"/>
 			<form:errors class="text-danger small" path="password"/>
 		</div>
 		<input class="btn btn-success" type="submit" value='Connexion'>
