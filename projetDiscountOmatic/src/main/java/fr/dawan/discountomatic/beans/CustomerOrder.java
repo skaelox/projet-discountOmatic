@@ -23,7 +23,7 @@ public class CustomerOrder {
     
     @OneToOne(optional = false)
     @JoinColumn(name = "customer_id", unique = true, nullable = false, updatable = false)
-    private String customerId;  
+    private long customerId;  
     
     @Column(name = "customer_order_purchase_date")
     private Date purchaseDate;
@@ -31,7 +31,7 @@ public class CustomerOrder {
     @Column(name = "customer_order_delivery_address")
     private String deliveryAddress;
     
-    @ManyToMany
+    //@ManyToMany
     @Column(name = "customer_order_list_article")
     private List<Article> listArticle;
     
@@ -46,11 +46,11 @@ public class CustomerOrder {
         this.customerOrderId = customerOrderId;
     }
 
-    public String getCustomerId() {
+    public long getCustomerId() {
         return customerId;
     }
 
-    public void setCustomerId(String customerId) {
+    public void setCustomerId(long customerId) {
         this.customerId = customerId;
     }
 
@@ -90,7 +90,7 @@ public class CustomerOrder {
         super();
     }
 
-    public CustomerOrder(long customerOrderId, String customerId, Date purchaseDate, String deliveryAddress,
+    public CustomerOrder(long customerOrderId, long customerId, Date purchaseDate, String deliveryAddress,
             List<Article> listArticle, int version) {
         super();
         this.customerOrderId = customerOrderId;
