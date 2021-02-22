@@ -36,7 +36,7 @@ public class Customer {
     private String gender;
     
     @OneToOne(optional = false)
-    @JoinColumn(name = "address_id", unique = true, nullable = false, updatable = false)
+    @JoinColumn(name = "addressId", unique = true, nullable = false, updatable = false)
     private Address address;    
     
     public long getCustomerId() {

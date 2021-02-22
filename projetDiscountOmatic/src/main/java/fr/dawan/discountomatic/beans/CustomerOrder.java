@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Version;
@@ -22,8 +23,7 @@ public class CustomerOrder {
     private long customerOrderId;
     
     @OneToOne(optional = false)
-    @JoinColumn(name = "customer_id", unique = true, nullable = false, updatable = false)
-    private long customerId;  
+    private Customer customer;  
     
     @Column(name = "customer_order_purchase_date")
     private Date purchaseDate;
@@ -31,30 +31,33 @@ public class CustomerOrder {
     @Column(name = "customer_order_delivery_address")
     private String deliveryAddress;
     
-    //@ManyToMany
+    @ManyToMany
+    @JoinTable(name="Order_Customer", joinColumns = {@JoinColumn(name="articleId")}, inverseJoinColumns = {@JoinColumn(name="customerOrderId")})
     @Column(name = "customer_order_list_article")
     private List<Article> listArticle;
     
     @Version
     private int version;
     
+  
+
     public long getCustomerOrderId() {
-        return customerOrderId;
-    }
+		return customerOrderId;
+	}
 
-    public void setCustomerOrderId(long customerOrderId) {
-        this.customerOrderId = customerOrderId;
-    }
+	public void setCustomerOrderId(long customerOrderId) {
+		this.customerOrderId = customerOrderId;
+	}
 
-    public long getCustomerId() {
-        return customerId;
-    }
+	public Customer getCustomer() {
+		return customer;
+	}
 
-    public void setCustomerId(long customerId) {
-        this.customerId = customerId;
-    }
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
+	}
 
-    public Date getPurchaseDate() {
+	public Date getPurchaseDate() {
         return purchaseDate;
     }
 
@@ -90,16 +93,18 @@ public class CustomerOrder {
         super();
     }
 
-    public CustomerOrder(long customerOrderId, long customerId, Date purchaseDate, String deliveryAddress,
-            List<Article> listArticle, int version) {
-        super();
-        this.customerOrderId = customerOrderId;
-        this.customerId = customerId;
-        this.purchaseDate = purchaseDate;
-        this.deliveryAddress = deliveryAddress;
-        this.listArticle = listArticle;
-        this.version = version;
-    }
+	public CustomerOrder(long customerOrderId, Customer customer, Date purchaseDate, String deliveryAddress,
+			List<Article> listArticle, int version) {
+		super();
+		this.customerOrderId = customerOrderId;
+		this.customer = customer;
+		this.purchaseDate = purchaseDate;
+		this.deliveryAddress = deliveryAddress;
+		this.listArticle = listArticle;
+		this.version = version;
+	}
+
+ 
     
     
 }
