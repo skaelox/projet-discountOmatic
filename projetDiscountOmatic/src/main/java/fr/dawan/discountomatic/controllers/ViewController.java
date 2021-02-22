@@ -3,7 +3,9 @@ package fr.dawan.discountomatic.controllers;
 import java.util.List;
 
 import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +25,7 @@ import fr.dawan.discountomatic.dto.CustomerDto;
 import fr.dawan.discountomatic.forms.LoginForm;
 
 @Controller
-@SessionAttributes({"user","isConnected"})
+@SessionAttributes({"user","isConnected","error"})
 public class ViewController {
     
     @Autowired
@@ -43,29 +45,47 @@ public class ViewController {
     }
     
     @PostMapping("/login") 
-    public ModelAndView loginPost(@ModelAttribute("user") Customer userSession, @Valid @ModelAttribute("loginform") LoginForm loginForm, BindingResult result) {
+    public ModelAndView loginPost(@Valid @ModelAttribute("loginform") LoginForm loginForm, BindingResult result, HttpServletRequest request) {
+        HttpSession session = request.getSession();
         ModelAndView model = new ModelAndView();
         if(result.hasErrors()) {
             model.addObject("error",result);
             model.addObject("loginform", loginForm);
         } else {
             CustomerDto c = userController.findAllByMailAndPassword(loginForm.getEmail(), loginForm.getPassword());
+            System.out.println(c);
             if(c != null) {
-                model.addObject("user", c);
-                model.addObject("isConnected", true);
+                //model.addObject("user", c);
+                //model.addObject("isConnected", true);
+                session.setAttribute("user", c);
+                session.setAttribute("isConnected", true);
                 model.setViewName("redirect:/");
             } else {
+                model.addObject("error", "L'adresse mail ou le mot de passe est invalide.");
                 model.addObject("loginform", loginForm);
-                model.setViewName("redirect:/login");
+                model.setViewName("login");
             }
         }
         
         return model;
     }
     
+    @GetMapping("/logout")
+    public String logout(@ModelAttribute ("user") Customer user ,@ModelAttribute ("isConnected") Boolean connected,Model model )
+    {
+        model.addAttribute("user",new Customer());
+        model.addAttribute("isConnected",false);
+        return"redirect:/";
+    }
+    
     @GetMapping("/account")
     public String account(Model m) {
         return "profile";
+    }
+    
+    @GetMapping("/detail")
+    public String showArticle(Model m) {
+        return "details";
     }
     
     @PostMapping("/addcart")
@@ -84,5 +104,5 @@ public class ViewController {
     public boolean initIsConnected() {
         return false;
     }
-
+    
 }
