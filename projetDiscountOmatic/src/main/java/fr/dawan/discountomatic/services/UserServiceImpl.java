@@ -55,8 +55,11 @@ public class UserServiceImpl implements UserService{
     @Override
     public CustomerDto findAllByMailAndPassword(String mail, String password) {
         Customer res = customerRepository.findAllByMailAndPassword(mail, password);
-        ModelMapper m = new ModelMapper();
-        return m.map(res, CustomerDto.class);
+        if(res != null) {
+            ModelMapper m = new ModelMapper();
+            return m.map(res, CustomerDto.class);
+        }
+        return null;
     }
 
     @Override

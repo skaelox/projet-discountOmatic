@@ -7,8 +7,10 @@
     <c:param name="titre" value="Connnexion"/>
 </c:import> 
 
-<h1>Connexion</h1> 
-
+<h1>Connexion</h1>
+<c:if test='${ not empty sessionScope.error && sessionScope.error != ""}'> 
+<p class="alert alert-danger" role="alert">${sessionScope.error}</p>
+</c:if>
 <!-- Formulaire de connexion -->
 <form:form action="/login" method="post" modelAttribute="loginform">
 	<div class="form-check" id="container">	
