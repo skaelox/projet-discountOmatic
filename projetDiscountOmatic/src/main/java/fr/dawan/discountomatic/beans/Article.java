@@ -30,6 +30,9 @@ public class Article {
 	@Column(name = "article_visibility")
 	private boolean visibility;
 	
+	@Column(name = "article_picture")
+	private String picture;
+	
 	@ManyToMany(mappedBy = "articles", cascade = CascadeType.ALL)
 	@Column(name = "article_category")
 	private List<Category> categories;
@@ -51,6 +54,7 @@ public class Article {
 		this.quantity = quantity;
 		this.visibility = visibility;
 		this.categories = categories;
+		this.picture = picture;
 	}
 	public long getArticleId() {
 		return articleId;
@@ -94,5 +98,14 @@ public class Article {
 	public void setCategories(List<Category> categories) {
 		this.categories = categories;
 	}
+
+	public String getPicture() {
+		return picture;
+	}
+
+	public void setPicture(String picture) {
+		this.picture = picture;
+	}
+	
 	
 }

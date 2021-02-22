@@ -13,13 +13,16 @@ public class ArticleDto implements Serializable{
 	private int quantity;
 	private boolean visibility;
 	private List<CategoryDto> categories;
+	private String picture;
+	private long articleId;
 	
 	public ArticleDto() {
 		
 	}
 
+
 	public ArticleDto(String name, String description, double price, int quantity, boolean visibility,
-			List<CategoryDto> categories) {
+			List<CategoryDto> categories, String picture, long articleId) {
 		super();
 		this.name = name;
 		Description = description;
@@ -27,7 +30,11 @@ public class ArticleDto implements Serializable{
 		this.quantity = quantity;
 		this.visibility = visibility;
 		this.categories = categories;
+		this.picture = picture;
+		this.articleId = articleId;
 	}
+
+
 
 	public String getName() {
 		return name;
@@ -76,10 +83,30 @@ public class ArticleDto implements Serializable{
 	public void setCategories(List<CategoryDto> categories) {
 		this.categories = categories;
 	}
+	
+
+	public String getPicture() {
+		return picture;
+	}
+
+	public void setPicture(String picture) {
+		this.picture = picture;
+	}
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+
+
+	public long getArticleId() {
+		return articleId;
+	}
+
+
+	public void setArticleId(long articleId) {
+		this.articleId = articleId;
+	}
+	
 	
 	
 }

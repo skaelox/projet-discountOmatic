@@ -16,6 +16,7 @@ public class ArticleMapper {
 			mapper.map(src -> src.getQuantity(), ArticleDto::setQuantity);
 			mapper.map(src -> src.isVisibility(), ArticleDto::setVisibility);
 			mapper.map(src -> src.getCategories(), ArticleDto::setCategories);
+			mapper.map(src -> src.getArticleId(), ArticleDto::setArticleId);
 		});
 		return m.map(a, ArticleDto.class);
 	}
