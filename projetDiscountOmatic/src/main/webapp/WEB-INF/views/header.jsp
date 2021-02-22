@@ -22,20 +22,22 @@
 			aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
-		<a class="navbar-brand" href="/springmvc/exemple"></a>
+		<a class="navbar-brand" href="/"></a>
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav mr-auto">
-				<li class="nav-item"><a class="nav-link" href='#'>test</a></li>
-				<li class="nav-item"><a class="nav-link" href='home'>Home</a></li>
-				<li class="nav-item"><a class="nav-link" href='#'>Category</a></li>
-				<li class="nav-item"><a class="nav-link" href='login'>Login</a></li>
-				<li class="nav-item"><a class="nav-link" href='inscription'>Inscription</a></li>
-				<li class="nav-item"><a class="nav-link" href='profile'>Profile</a></li>
-				
-				
+				<li class="nav-item"><a class="nav-link" href='/'>DiscountOmatic</a></li>
+				<li class="nav-item"><a class="nav-link" href='/'>Accueil</a></li>			
 			</ul>
-
-
+		</div>
+		<div class="btn-group dropleft" role="group">
+		<button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		  Profile
+		</button>
+			<div class="dropdown-menu" aria-labelledby="dropdownMenuButton"> 
+		        <a class="dropdown-item" href='login'>Login</a>
+		        <a class="dropdown-item" href='subcribe'>Inscription</a>
+		        <a class=dropdown-item href='account'>Voir mon profile</a>   
+			</div>
 		</div>
 	</header>
 	<main class="container-fluid">
