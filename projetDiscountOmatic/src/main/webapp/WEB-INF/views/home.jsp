@@ -63,7 +63,8 @@
 	<c:forEach items="${articleArray}" var="article">
 		<div class="card mx-auto mt-5 shadow p-3 mb-5 bg-body rounded"
 			style="width: 20rem">
-			<img class="card-img-top" src="" alt="Photo Article">
+			<img class="card-img-top" src='/imgArticles/<c:out value="${article.picture}"/>' alt="Logo" /> 
+<!-- <img class="card-img-top" src="images/ordinateur.jpg" alt="Logo" />  pour mettre les images en fixe , exemple bannière -->
 			<div class="card-body">
 				<h4 class="card-title">
 					<c:out value="${article.name}" />
@@ -73,7 +74,7 @@
 					Prix:
 					<c:out value="${article.price}" />
 				</h4>
-				<a href="#" class="btn btn-light mt-5 ml-4">See more.</a> 
+				<a href="<c:url></c:url>" class="btn btn-light mt-5 ml-4">See more.</a> 
 				<a href="#" class="btn btn-warning mt-5 mr-4">Panier</a> 
 			</div>
 		</div>
