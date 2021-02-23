@@ -98,7 +98,7 @@ public class ViewController {
             model.addAttribute("createaccountform", createAccountForm);
         } else {
             CustomerDto c = new CustomerDto();
-            c.setFirstName(createAccountForm.ge);
+            c.setFirstName(createAccountForm.getPrenom());
             
             if(c != null) {
                 model.addAttribute("user", c);
