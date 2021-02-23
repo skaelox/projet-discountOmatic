@@ -15,7 +15,7 @@
 
         <!-- Radio button -->
         <div class="form-check">
-            <form:input class="form-check-input" type="radio" id="femme" name="gender" value="femme" checked/>
+            <form:input class="form-check-input" type="radio" id="femme" name="gender" value="femme" checked="checked"/>
             <form:label class="form-check-label" path="homme">Homme</form:label>
         </div>
         <div class="form-check">
