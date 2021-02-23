@@ -85,12 +85,18 @@ public class ViewController {
         return "profile";
     }
     
+    @GetMapping("/createaccount")
+    public String createAccount() {
+        
+        return null;
+    }
+    
     @GetMapping("/showarticle")
     public String showArticle(@RequestParam long id, Model m) {
         ArticleDto article = adminController.getArticleById(id);
         if(article != null ) {
-            m.addAttribute(article);            
-            return "details";
+            m.addAttribute("article", article);            
+            return "detail";
         }
         m.addAttribute("error", "Article Introuvable");
         return "/";
