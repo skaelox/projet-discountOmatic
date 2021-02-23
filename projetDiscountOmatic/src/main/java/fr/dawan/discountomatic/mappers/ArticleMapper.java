@@ -20,5 +20,20 @@ public class ArticleMapper {
 		});
 		return m.map(a, ArticleDto.class);
 	}
+	
+	public static Article fromDto(ArticleDto a) {
+        ModelMapper m = new ModelMapper();
+        m.typeMap(ArticleDto.class, Article.class).addMappings(mapper -> {
+            mapper.map(src -> src.getName(), Article::setName);
+            mapper.map(src -> src.getDescription(), Article::setDescription);
+            mapper.map(src -> src.getPrice(), Article::setPrice);
+            mapper.map(src -> src.getQuantity(), Article::setQuantity);
+            mapper.map(src -> src.isVisibility(), Article::setVisibility);
+            mapper.map(src -> src.getCategories(), Article::setCategories);
+            mapper.map(src -> src.getArticleId(), Article::setArticleId);
+        });
+        return m.map(a, Article.class);
+    }
 }
+
 	

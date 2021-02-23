@@ -25,6 +25,7 @@ import fr.dawan.discountomatic.beans.Article;
 import fr.dawan.discountomatic.beans.Customer;
 import fr.dawan.discountomatic.dto.ArticleDto;
 import fr.dawan.discountomatic.dto.CustomerDto;
+import fr.dawan.discountomatic.forms.CreateAccountForm;
 import fr.dawan.discountomatic.forms.LoginForm;
 
 @Controller
@@ -51,13 +52,12 @@ public class ViewController {
     }
     
     @PostMapping("/login") 
-    public String loginPost(@Valid @ModelAttribute("loginform") LoginForm loginForm, BindingResult result, HttpServletRequest request, Model model) {
+    public String loginPost(@Valid @ModelAttribute("loginform") LoginForm loginForm, BindingResult result, Model model) {
         if(result.hasErrors()) {
             model.addAttribute("error",result);
             model.addAttribute("loginform", loginForm);
         } else {
             CustomerDto c = userController.findAllByMailAndPassword(loginForm.getEmail(), loginForm.getPassword());
-            System.out.println(c);
             if(c != null) {
                 model.addAttribute("user", c);
                 model.addAttribute("isConnected", true);
@@ -85,9 +85,31 @@ public class ViewController {
         return "profile";
     }
     
-    @GetMapping("/createaccount")
-    public String createAccount() {
-        
+    @GetMapping("/signin")
+    public String createAccount(Model m) {
+        m.addAttribute("createaccountform", new CreateAccountForm());
+        return "signin";
+    }
+    
+    @PostMapping("/signin")
+    public String upldoadNewAccount(@Valid @ModelAttribute("createaccountform") CreateAccountForm createAccountForm, BindingResult result, Model model) {
+        if(result.hasErrors()) {
+            model.addAttribute("error",result);
+            model.addAttribute("createaccountform", createAccountForm);
+        } else {
+            CustomerDto c = new CustomerDto();
+            c.setFirstName(createAccountForm.ge);
+            
+            if(c != null) {
+                model.addAttribute("user", c);
+                model.addAttribute("isConnected", true);
+                return "redirect:/";
+            } else {
+                model.addAttribute("error", "L'adresse mail ou le mot de passe est invalide.");
+                model.addAttribute("createaccountform", createAccountForm);
+                return "login";
+            }
+        }
         return null;
     }
     
@@ -102,12 +124,18 @@ public class ViewController {
         return "/";
     }
     
-    @PostMapping("/addcart")
+    @GetMapping("/addcart")
     public String addCart(@RequestParam long id, HttpServletResponse response, Model m) {
         List<ArticleDto> cart = (List<ArticleDto>) m.getAttribute("cart");
-        cart.add(adminController.getArticleById(id));
-        m.addAttribute("cart",cart);
+        ArticleDto article = adminController.getArticleById(id);
+        if(article != null) {
+            cart.add(article);
+            m.addAttribute("cart",cart);
+            return "redirect:/";
+        }
+        m.addAttribute("error", "Article Introuvable");
         return "redirect:/";
+        
     }
     
     @ModelAttribute("user")
