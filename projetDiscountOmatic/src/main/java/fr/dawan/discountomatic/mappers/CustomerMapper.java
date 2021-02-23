@@ -36,7 +36,7 @@ public class CustomerMapper {
             mapper.map(src->src.getPassword(), Customer::setPassword);
             mapper.map(src->src.getMail(), Customer::setMail);
             mapper.map(src->src.getGender(), Customer::setGender);
-            mapper.map(src->AddressMapper.fromDto(src.getAdress()), Customer::setAddress);
+            mapper.map(src-> AddressMapper.fromDto(src.getAdress()), Customer::setAddress);
         });
         return mapper.map(cDto, Customer.class);
     }

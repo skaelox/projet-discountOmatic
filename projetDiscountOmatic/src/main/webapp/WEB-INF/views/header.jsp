@@ -29,6 +29,10 @@
 				<li class="nav-item"><a class="nav-link" href='/'>Accueil</a></li>			
 			</ul>
 		</div>
+		<a class="btn btn-warning" href="/viewcart" >
+          Panier
+        </a>
+		
 		<div class="btn-group dropleft" role="group">
 		<button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 		  Profile
@@ -45,7 +49,7 @@
                 <a class=dropdown-item href='#'>Voir mon profile</a>
                 </c:if>
 			</div>
-		
+		  
 		
 		</div>
 	</header>

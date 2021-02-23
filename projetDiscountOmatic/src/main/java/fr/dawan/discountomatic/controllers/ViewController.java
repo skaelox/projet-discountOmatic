@@ -153,6 +153,11 @@ public class ViewController {
         
     }
     
+    @GetMapping("/viewcart")
+    public String viewCart(Model m) {
+        return "cart";
+    }
+    
     @ModelAttribute("user")
     public CustomerDto initUser() {
         return new CustomerDto();

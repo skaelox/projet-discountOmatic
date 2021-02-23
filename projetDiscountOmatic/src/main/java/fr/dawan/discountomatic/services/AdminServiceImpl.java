@@ -10,6 +10,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import fr.dawan.discountomatic.beans.Address;
 import fr.dawan.discountomatic.beans.Article;
 import fr.dawan.discountomatic.beans.Category;
 import fr.dawan.discountomatic.beans.Customer;
@@ -18,10 +19,12 @@ import fr.dawan.discountomatic.dto.ArticleDto;
 import fr.dawan.discountomatic.dto.CategoryDto;
 import fr.dawan.discountomatic.dto.CustomerDto;
 import fr.dawan.discountomatic.dto.SupplierDto;
+import fr.dawan.discountomatic.mappers.AddressMapper;
 import fr.dawan.discountomatic.mappers.ArticleMapper;
 import fr.dawan.discountomatic.mappers.CategoryMapper;
 import fr.dawan.discountomatic.mappers.CustomerMapper;
 import fr.dawan.discountomatic.mappers.SupplierMapper;
+import fr.dawan.discountomatic.repositories.AddressRepository;
 import fr.dawan.discountomatic.repositories.ArticleRepository;
 import fr.dawan.discountomatic.repositories.CategoryRepository;
 import fr.dawan.discountomatic.repositories.CustomerRepository;
@@ -38,6 +41,8 @@ public class AdminServiceImpl implements AdminService{
 	SupplierRepository supplierRepository;
 	@Autowired
 	CustomerRepository customerRepository;
+	@Autowired
+	AddressRepository addressRepository;
 
 	@Override
 	public List<ArticleDto> getAllArticle() {
@@ -114,6 +119,9 @@ public class AdminServiceImpl implements AdminService{
 	public CustomerDto saveOrUpdateCustomer(CustomerDto cDto) {
 		ModelMapper m = new ModelMapper();
 		Customer c = m.map(cDto, Customer.class);
+		Address a = AddressMapper.fromDto(cDto.getAdress());
+		a = addressRepository.saveAndFlush(a);
+		c.setAddress(a);
         c = customerRepository.saveAndFlush(c);
         return m.map(c, CustomerDto.class);
 	}
