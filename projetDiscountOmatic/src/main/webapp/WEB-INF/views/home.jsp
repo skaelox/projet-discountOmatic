@@ -8,26 +8,16 @@
 </c:import>
 
 
-<div class="jumbotron jumbotron-fluid">
-	<div class="container">
-		<h1 class="display-4">Fluid jumbotron</h1>
-		<p class="lead">This is a modified jumbotron that occupies the
-			entire horizontal space of its parent.</p>
-	</div>
-</div>
+<img class="img" src="images/banniere-ecran.png" alt="Logo" /> 
+
 
 
 <div class="card-group">
-	<div class="card shadow p-3 mb-5 bg-body rounded m-3 ml-4" style="width: 40rem">
-		<img class="card-img-top" src="..." alt="Card image cap">
+	<div class="card shadow p-3 mb-5 bg-body rounded m-3 ml-4" >
+		<img class="card-img mx-auto mt-5 " src="images/pcPortable.jpg" alt="Card image cap">
 		<div class="card-body">
-			<h5 class="card-title">Catégorie 1</h5>
-			<p class="card-text">This is a wider card with supporting text
-				below as a natural lead-in to additional content. This content is a
-				little bit longer.</p>
-			<p class="card-text">
-<!-- 				<small class="text-muted">Last updated 3 mins ago</small> -->
-			</p>
+			<h5 class="card-title">Nos pc portables</h5>
+			<p class="card-text text-dark"><b>Voici une sélection de nos pc portables</b></p>
 			<a href="#" class="btn btn-light mt-5 ml-4">Voir catégorie</a> 
 		</div>
 	</div>
@@ -38,7 +28,7 @@
 			<p class="card-text">This card has supporting text below as a
 				natural lead-in to additional content.</p>
 			<p class="card-text">
-<!-- 				<small class="text-muted">Last updated 3 mins ago</small> -->
+			<small class="text-muted">Last updated 3 mins ago</small>
 			</p>
 			<a href="#" class="btn btn-light mt-5 ml-4">Voir catégorie</a> 
 		</div>
@@ -51,7 +41,7 @@
 				below as a natural lead-in to additional content. This card has even
 				longer content than the first to show that equal height action.</p>
 			<p class="card-text">
-<!-- 				<small class="text-muted">Last updated 3 mins ago</small> -->
+				<small class="text-muted">Last updated 3 mins ago</small> 
 			</p>
 			<a href="#" class="btn btn-light mt-5 ml-4">Voir catégorie</a> 
 		</div>
@@ -64,7 +54,7 @@
 		<div class="card mx-auto mt-5 shadow p-3 mb-5 bg-body rounded"
 			style="width: 20rem">
 			<img class="card-img-top" src='/imgArticles/<c:out value="${article.picture}"/>' alt="Logo" /> 
-<!-- <img class="card-img-top" src="images/ordinateur.jpg" alt="Logo" />  pour mettre les images en fixe , exemple bannière -->
+
 			<div class="card-body">
 				<h4 class="card-title">
 					<c:out value="${article.name}" />
@@ -74,7 +64,7 @@
 					Prix:
 					<c:out value="${article.price}" />
 				</h4>
-				<a href="<c:url></c:url>" class="btn btn-light mt-5 ml-4">See more.</a> 
+				<a href='<c:url value="/details"/>' class="btn btn-light mt-5 ml-4">See more.</a> 
 				<a href="#" class="btn btn-warning mt-5 mr-4">Panier</a> 
 			</div>
 		</div>

@@ -4,7 +4,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <c:import url="header.jsp">
-	<c:param name="titre" value="Accueil" />
+	<c:param name="titre" value="detail" />
 </c:import>
 
 
