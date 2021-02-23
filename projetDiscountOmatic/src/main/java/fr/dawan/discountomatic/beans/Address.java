@@ -21,7 +21,7 @@ public class Address {
 	private String  street;
 	
 	@Column(name = "address_number")
-	private int number;
+	private String number;
 	
 	@Column(name = "address_city")
 	private String city;
@@ -29,6 +29,9 @@ public class Address {
 	@Column(name = "address_country")
 	private String country;
 	
+    @OneToOne
+	private Supplier supplier;
+	    
 	@Version
 	private int version;
 
@@ -36,67 +39,73 @@ public class Address {
 		super();
 	}
 
-	public Address(long addressId, String street, int number, String city, String country) {
-		super();
-		this.addressId = addressId;
-		this.street = street;
-		this.number = number;
-		this.city = city;
-		this.country = country;
-	}
-	
-	@OneToOne
-	private Supplier supplier;
+	public Address(long addressId, String street, String number, String city, String country, int version,
+            Supplier supplier) {
+        super();
+        this.addressId = addressId;
+        this.street = street;
+        this.number = number;
+        this.city = city;
+        this.country = country;
+        this.version = version;
+        this.supplier = supplier;
+    }
 
-	public long getAddressId() {
-		return addressId;
-	}
+    public long getAddressId() {
+        return addressId;
+    }
 
-	public void setAddressId(long addressId) {
-		this.addressId = addressId;
-	}
+    public void setAddressId(long addressId) {
+        this.addressId = addressId;
+    }
 
-	public String getStreet() {
-		return street;
-	}
+    public String getStreet() {
+        return street;
+    }
 
-	public void setStreet(String street) {
-		this.street = street;
-	}
+    public void setStreet(String street) {
+        this.street = street;
+    }
 
-	public int getNumber() {
-		return number;
-	}
+    public String getNumber() {
+        return number;
+    }
 
-	public void setNumber(int number) {
-		this.number = number;
-	}
+    public void setNumber(String number) {
+        this.number = number;
+    }
 
-	public String getCity() {
-		return city;
-	}
+    public String getCity() {
+        return city;
+    }
 
-	public void setCity(String city) {
-		this.city = city;
-	}
+    public void setCity(String city) {
+        this.city = city;
+    }
 
-	public String getCountry() {
-		return country;
-	}
+    public String getCountry() {
+        return country;
+    }
 
-	public void setCountry(String country) {
-		this.country = country;
-	}
+    public void setCountry(String country) {
+        this.country = country;
+    }
 
-	public Supplier getSupplier() {
-		return supplier;
-	}
+    public Supplier getSupplier() {
+        return supplier;
+    }
 
-	public void setSupplier(Supplier supplier) {
-		this.supplier = supplier;
-	}
+    public void setSupplier(Supplier supplier) {
+        this.supplier = supplier;
+    }
 
-	
-	
+    public int getVersion() {
+        return version;
+    }
+
+    public void setVersion(int version) {
+        this.version = version;
+    }
+
 	
 }

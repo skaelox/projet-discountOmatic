@@ -10,7 +10,7 @@ public class AddressDto implements Serializable{
 	
 	private String  street;
 	
-	private int number;
+	private String number;
 	
 	private String city;
 	
@@ -20,55 +20,44 @@ public class AddressDto implements Serializable{
 		super();
 	}
 
+	public AddressDto(String street, String number, String city, String country) {
+        super();
+        this.street = street;
+        this.number = number;
+        this.city = city;
+        this.country = country;
+    }
 
-	public AddressDto(String street, int number, String city, String country) {
-		super();
-		this.street = street;
-		this.number = number;
-		this.city = city;
-		this.country = country;
-	}
+    public String getStreet() {
+        return street;
+    }
 
+    public void setStreet(String street) {
+        this.street = street;
+    }
 
-	public String getStreet() {
-		return street;
-	}
+    public String getNumber() {
+        return number;
+    }
 
+    public void setNumber(String number) {
+        this.number = number;
+    }
 
-	public void setStreet(String street) {
-		this.street = street;
-	}
+    public String getCity() {
+        return city;
+    }
 
+    public void setCity(String city) {
+        this.city = city;
+    }
 
-	public int getNumber() {
-		return number;
-	}
+    public String getCountry() {
+        return country;
+    }
 
-
-	public void setNumber(int number) {
-		this.number = number;
-	}
-
-
-	public String getCity() {
-		return city;
-	}
-
-
-	public void setCity(String city) {
-		this.city = city;
-	}
-
-
-	public String getCountry() {
-		return country;
-	}
-
-
-	public void setCountry(String country) {
-		this.country = country;
-	}
-	
-	
+    public void setCountry(String country) {
+        this.country = country;
+    }
 
 }
