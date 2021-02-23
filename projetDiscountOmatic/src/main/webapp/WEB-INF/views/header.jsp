@@ -34,12 +34,12 @@
 		  Profile
 		</button>
 			<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-			<c:if test="${not empty sessionScope.user && sessionScope.user == null}">
+			<c:if test="${not empty sessionScope.isConnected && !sessionScope.isConnected}">
 		        <a class="dropdown-item" href='login'>Login</a>
 		        <a class="dropdown-item" href='subcribe'>Inscription</a>
 		        <a class=dropdown-item href='account'>Logout</a>
 		        </c:if>
-		        <c:if test="${not empty sessionScope.user && sessionScope.user != null}">
+		        <c:if test="${not empty sessionScope.isConnected && sessionScope.isConnected}">
 		        <p>${sessionScope.user.firstName}</p>
                 <a class=dropdown-item href='#'>Voir mon profile</a>
                 <a class=dropdown-item href='/logout'>Logout</a>

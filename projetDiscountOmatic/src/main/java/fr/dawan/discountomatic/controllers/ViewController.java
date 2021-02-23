@@ -1,5 +1,6 @@
 package fr.dawan.discountomatic.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.Cookie;
@@ -27,7 +28,7 @@ import fr.dawan.discountomatic.dto.CustomerDto;
 import fr.dawan.discountomatic.forms.LoginForm;
 
 @Controller
-@SessionAttributes({"user","isConnected","error"})
+@SessionAttributes({"user","isConnected","cart"})
 public class ViewController {
     
     @Autowired
@@ -50,35 +51,31 @@ public class ViewController {
     }
     
     @PostMapping("/login") 
-    public ModelAndView loginPost(@Valid @ModelAttribute("loginform") LoginForm loginForm, BindingResult result, HttpServletRequest request) {
-        HttpSession session = request.getSession();
-        ModelAndView model = new ModelAndView();
+    public String loginPost(@Valid @ModelAttribute("loginform") LoginForm loginForm, BindingResult result, HttpServletRequest request, Model model) {
         if(result.hasErrors()) {
-            model.addObject("error",result);
-            model.addObject("loginform", loginForm);
+            model.addAttribute("error",result);
+            model.addAttribute("loginform", loginForm);
         } else {
             CustomerDto c = userController.findAllByMailAndPassword(loginForm.getEmail(), loginForm.getPassword());
             System.out.println(c);
             if(c != null) {
-                //model.addObject("user", c);
-                //model.addObject("isConnected", true);
-                session.setAttribute("user", c);
-                session.setAttribute("isConnected", true);
-                model.setViewName("redirect:/");
+                model.addAttribute("user", c);
+                model.addAttribute("isConnected", true);
+                return "redirect:/";
             } else {
-                model.addObject("error", "L'adresse mail ou le mot de passe est invalide.");
-                model.addObject("loginform", loginForm);
-                model.setViewName("login");
+                model.addAttribute("error", "L'adresse mail ou le mot de passe est invalide.");
+                model.addAttribute("loginform", loginForm);
+                return "login";
             }
         }
         
-        return model;
+        return "redirect:/login";
     }
     
     @GetMapping("/logout")
-    public String logout(@ModelAttribute ("user") Customer user ,@ModelAttribute ("isConnected") Boolean connected,Model model )
+    public String logout(@ModelAttribute ("user") CustomerDto user ,@ModelAttribute ("isConnected") Boolean connected,Model model )
     {
-        model.addAttribute("user",new Customer());
+        model.addAttribute("user",new CustomerDto());
         model.addAttribute("isConnected",false);
         return"redirect:/";
     }
@@ -100,20 +97,26 @@ public class ViewController {
     }
     
     @PostMapping("/addcart")
-    public String addCart(@RequestParam String value, HttpServletResponse response) {
-        Cookie cart = new Cookie("items", value);
-        response.addCookie(cart);
+    public String addCart(@RequestParam long id, HttpServletResponse response, Model m) {
+        List<ArticleDto> cart = (List<ArticleDto>) m.getAttribute("cart");
+        cart.add(adminController.getArticleById(id));
+        m.addAttribute("cart",cart);
         return "redirect:/";
     }
     
     @ModelAttribute("user")
-    public Customer initUser() {
-        return new Customer();
+    public CustomerDto initUser() {
+        return new CustomerDto();
     }
     
     @ModelAttribute("isConnected")
     public boolean initIsConnected() {
         return false;
+    }
+    
+    @ModelAttribute("cart")
+    public List<ArticleDto> initCart() {
+        return new ArrayList<ArticleDto>();
     }
     
 }
