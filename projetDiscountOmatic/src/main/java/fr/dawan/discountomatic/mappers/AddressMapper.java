@@ -20,4 +20,16 @@ public class AddressMapper {
 		return m.map(a, AddressDto.class);
 	}
 
+    public static Address fromDto(AddressDto adress) {
+        ModelMapper m = new ModelMapper();
+        m.typeMap(AddressDto.class, Address.class).addMappings(mapper -> {
+            mapper.map(src -> src.getStreet(), Address::setStreet);
+            mapper.map(src -> src.getNumber(), Address::setNumber);
+            mapper.map(src -> src.getCity(), Address::setCity);
+            mapper.map(src -> src.getCountry(), Address::setCountry);
+    
+        });
+        return m.map(adress, Address.class);
+    }
+
 }

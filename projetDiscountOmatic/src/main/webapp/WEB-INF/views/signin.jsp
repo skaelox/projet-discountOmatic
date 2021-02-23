@@ -11,22 +11,19 @@
 
 <!-- Formulaire d'inscription -->
 <form:form action="/signin" method="post" modelAttribute="createaccountform">
-    <div class="form-check" id="container">
+    <div id="container">
 
         <!-- Radio button -->
-        <div class="form-check">
-            <form:input class="form-check-input" type="radio" id="femme" name="gender" value="femme" checked="checked"/>
-            <form:label class="form-check-label" path="homme">Homme</form:label>
-        </div>
-        <div class="form-check">
-            <form:input class="form-check-input" type="radio" id="homme" name="gender" value="homme"/>
-            <form:label class="form-check-label" path="femme">Femme</form:label>
-        </div>
-        <div class="form-check">
-            <form:input class="form-check-input" type="radio" id="autre" name="gender" value="autre"/>
-            <form:label class="form-check-label" path="autre">Autre</form:label>
-        </div>
+        <form:label path="gender" >
+            <form:label path="gender">Homme</form:label>
+            <form:radiobutton path="gender" value="homme" checked="checked" />
             
+            <form:label path="gender">Femme</form:label>
+            <form:radiobutton path="gender" value="femme" />
+            
+            <form:label path="gender">Autre</form:label>
+            <form:radiobutton path="gender" value="Autre" />
+        </form:label>
         <!-- Text Field -->    
         <div class="form-group">
 	        <form:label path="prenom">Prénom</form:label>
@@ -40,12 +37,12 @@
         </div>        
         <div class="form-group">
             <form:label path="email">Adresse e-mail</form:label> 
-            <form:input class="form-control" type="email" placeholder="Entrer votre adresse mail"/>
+            <form:input class="form-control" path="email" type="email" placeholder="Entrer votre adresse mail"/>
             <form:errors class="text-danger small" path="email"/>
         </div>        
         <div class="form-group">
             <form:label class="form-label" path="confirm_email">Confirmation de l'adresse mail :</form:label> 
-            <form:input class="form-control" type="email" placeholder="Entrer de nouveau votre adresse mail"/>
+            <form:input class="form-control" path="confirm_email" type="email" placeholder="Entrer de nouveau votre adresse mail"/>
             <form:errors class="text-danger small" path="confirm_email"/>
         </div>       
         <div class="form-group">
@@ -55,15 +52,40 @@
         </div>       
         <div class="form-group">
             <form:label class="form-label" path="confirm_password">Confirmation du mot de passe :</form:label>
-            <form:password class="form-control" path="password" placeholder="Entrer de nouveau le mot de passe"/>
+            <form:password class="form-control" path="confirm_password" placeholder="Entrer de nouveau le mot de passe"/>
             <form:errors class="small text-danger" path="confirm_password"/>
         </div>        
         <div class="form-group">
             <form:label class="form-label" path="phone_number">N° de téléphone :</form:label>
-            <form:password class="form-control" path="password" placeholder="Entrer votre n° de téléphone"/>
+            <form:input class="form-control" path="phone_number" placeholder="Entrer votre n° de téléphone"/>
             <form:errors class="small text-danger" path="phone_number"/> 
-        </div>        
-
+        </div>
+        
+        <!-- Adress -->    
+        <h2>Adresse</h2>
+        <div class="form-group">
+            <form:label class="form-label" path="street">Rue</form:label>
+            <form:input class="form-control" path="street" placeholder="Entrer votre n° de téléphone"/>
+            <form:errors class="small text-danger" path="street"/> 
+        </div>
+        
+        <div class="form-group">
+            <form:label class="form-label" path="number">N°</form:label>
+            <form:input class="form-control" path="number" placeholder="Entrer votre n° de téléphone"/>
+            <form:errors class="small text-danger" path="number"/> 
+        </div>
+        
+        <div class="form-group">
+            <form:label class="form-label" path="city">Ville</form:label>
+            <form:input class="form-control" path="city" placeholder="Entrer votre n° de téléphone"/>
+            <form:errors class="small text-danger" path="city"/> 
+        </div>
+        
+        <div class="form-group">
+            <form:label class="form-label" path="country">Pays</form:label>
+            <form:input class="form-control" path="country" placeholder="Entrer votre n° de téléphone"/>
+            <form:errors class="small text-danger" path="country"/> 
+        </div>
         <!-- Button -->
         <input class="btn btn-success" type="submit" id='submit' value='Valider'>
         <input class="btn btn-danger" type="submit" id='submit' value='Annuler'>

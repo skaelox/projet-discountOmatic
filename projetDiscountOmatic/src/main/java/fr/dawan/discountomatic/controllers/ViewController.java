@@ -23,6 +23,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import fr.dawan.discountomatic.beans.Article;
 import fr.dawan.discountomatic.beans.Customer;
+import fr.dawan.discountomatic.dto.AddressDto;
 import fr.dawan.discountomatic.dto.ArticleDto;
 import fr.dawan.discountomatic.dto.CustomerDto;
 import fr.dawan.discountomatic.forms.CreateAccountForm;
@@ -97,11 +98,25 @@ public class ViewController {
             model.addAttribute("error",result);
             model.addAttribute("createaccountform", createAccountForm);
         } else {
-            CustomerDto c = new CustomerDto();
-            c.setFirstName(createAccountForm.getPrenom());
+            AddressDto aDto = new AddressDto();
+            aDto.setCity(createAccountForm.getCity());
+            aDto.setCountry(createAccountForm.getCountry());
+            aDto.setNumber(createAccountForm.getNumber());
+            aDto.setStreet(createAccountForm.getStreet());
+            
+            CustomerDto cDto = new CustomerDto();
+            cDto.setFirstName(createAccountForm.getPrenom());
+            cDto.setLastName(createAccountForm.getNom());
+            cDto.setPhoneNumber(createAccountForm.getPhone_number());
+            cDto.setPassword(createAccountForm.getPassword());
+            cDto.setMail(createAccountForm.getEmail());
+            cDto.setGender(createAccountForm.getGender());
+            cDto.setAdress(aDto);            
+            
+            CustomerDto c = adminController.saveCustomer(cDto);
             
             if(c != null) {
-                model.addAttribute("user", c);
+                model.addAttribute("user", cDto);
                 model.addAttribute("isConnected", true);
                 return "redirect:/";
             } else {

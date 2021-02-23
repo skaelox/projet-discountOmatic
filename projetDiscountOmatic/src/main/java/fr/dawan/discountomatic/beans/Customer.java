@@ -1,5 +1,6 @@
 package fr.dawan.discountomatic.beans;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -24,7 +25,7 @@ public class Customer {
     private String lastName;
     
     @Column(name = "customer_phone_number")
-    private int phoneNumber;
+    private String phoneNumber;
     
     @Column(name = "customer_password")
     private String password;
@@ -35,7 +36,7 @@ public class Customer {
     @Column(name = "customer_gender")
     private String gender;
     
-    @OneToOne(optional = false)
+    @OneToOne(optional = false, cascade = CascadeType.ALL)
     @JoinColumn(name = "addressId", unique = true, nullable = false, updatable = false)
     private Address address;    
     
@@ -63,11 +64,11 @@ public class Customer {
         this.lastName = lastName;
     }
 
-    public int getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(int phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
@@ -110,7 +111,7 @@ public class Customer {
         super();
     }
 
-    public Customer(long customerId, String firstName, String lastName, int phoneNumber, String password, String mail,
+    public Customer(long customerId, String firstName, String lastName, String phoneNumber, String password, String mail,
             String gender, Address address) {
         super();
         this.customerId = customerId;

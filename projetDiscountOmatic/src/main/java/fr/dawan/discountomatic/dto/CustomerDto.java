@@ -2,6 +2,8 @@ package fr.dawan.discountomatic.dto;
 
 import java.io.Serializable;
 
+import fr.dawan.discountomatic.beans.Address;
+
 
 public class CustomerDto implements Serializable{
 
@@ -13,13 +15,36 @@ public class CustomerDto implements Serializable{
 
     private String lastName;
 
-    private int phoneNumber;
+    private String phoneNumber;
     
     private String password;
 
     private String mail;
     
-    private String gender;    
+    private String gender;  
+    
+    private AddressDto adress;
+
+    public CustomerDto(long customerId, String firstName, String lastName, String phoneNumber, String password,
+            String mail, String gender, AddressDto adress) {
+        super();
+        this.customerId = customerId;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.phoneNumber = phoneNumber;
+        this.password = password;
+        this.mail = mail;
+        this.gender = gender;
+        this.adress = adress;
+    }
+
+    public AddressDto getAdress() {
+        return adress;
+    }
+
+    public void setAdress(AddressDto aDto) {
+        this.adress = aDto;
+    }
 
     public long getCustomerId() {
         return customerId;
@@ -45,11 +70,12 @@ public class CustomerDto implements Serializable{
         this.lastName = lastName;
     }
 
-    public int getPhoneNumber() {
+
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(int phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
@@ -81,17 +107,7 @@ public class CustomerDto implements Serializable{
         super();
     }
 
-    public CustomerDto(long customerId, String firstName, String lastName, int phoneNumber, String password, String mail,
-            String gender) {
-        super();
-        this.customerId = customerId;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.phoneNumber = phoneNumber;
-        this.password = password;
-        this.mail = mail;
-        this.gender = gender;
-    }
+    
     
     
 }
