@@ -64,8 +64,8 @@
 					Prix:
 					<c:out value="${article.price}" />
 				</h4>
-				<a href='<c:url value="/details"/>' class="btn btn-light mt-5 ml-4">See more.</a> 
-				<a href="#" class="btn btn-warning mt-5 mr-4">Panier</a> 
+				<a href='<c:url value="/showarticle?id=${article.articleId}"/>' class="btn btn-light mt-5 ml-4">See more.</a> 
+				<a href='<c:url value="/addcart?id=${article.articleId}"/>' class="btn btn-warning mt-5 mr-4">Panier</a> 
 			</div>
 		</div>
 	</c:forEach>
