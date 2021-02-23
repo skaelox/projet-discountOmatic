@@ -4,8 +4,10 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
-
 public class CreateAccountForm {
+    @NotEmpty
+    private String gender;
+    
     @NotEmpty
     @Size(min = 2, max = 50)
     private String prenom;
@@ -33,12 +35,12 @@ public class CreateAccountForm {
     @NotEmpty
     @Size(min = 2, max = 40)
     private String phone_number;
-    
+
     public CreateAccountForm() {
-        
+        super();
     }
 
-    public CreateAccountForm(@NotEmpty @Size(min = 2, max = 50) String prenom,
+    public CreateAccountForm(@NotEmpty String gender, @NotEmpty @Size(min = 2, max = 50) String prenom,
             @NotEmpty @Size(min = 2, max = 50) String nom,
             @NotEmpty(message = "{login.email.notempty}") @Email String email,
             @NotEmpty(message = "{login.email.notempty}") @Email String confirm_email,
@@ -46,6 +48,7 @@ public class CreateAccountForm {
             @NotEmpty @Size(min = 2, max = 40) String confim_password,
             @NotEmpty @Size(min = 2, max = 40) String phone_number) {
         super();
+        this.gender = gender;
         this.prenom = prenom;
         this.nom = nom;
         this.email = email;
@@ -53,6 +56,14 @@ public class CreateAccountForm {
         this.password = password;
         this.confim_password = confim_password;
         this.phone_number = phone_number;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 
     public String getPrenom() {
