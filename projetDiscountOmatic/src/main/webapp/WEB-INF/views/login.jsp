@@ -9,7 +9,7 @@
 
 <h1>Connexion</h1>
 <c:if test='${ not empty sessionScope.error && sessionScope.error != ""}'> 
-<p class="alert alert-danger" role="alert">${sessionScope.error}</p>
+<p class="alert alert-danger" role="alert">Déconnecté${sessionScope.error}</p>
 </c:if>
 <!-- Formulaire de connexion -->
 <form:form action="/login" method="post" modelAttribute="loginform">
