@@ -20,7 +20,7 @@ public class CustomerOrderMapper {
             mapper.map(src->src.getCustomerOrderId(), CustomerOrderDto::setCustomerOrderId);
             mapper.map(src->CustomerMapper.toDto(src.getCustomer()), CustomerOrderDto::setCustomerDto);
             mapper.map(src->src.getPurchaseDate(), CustomerOrderDto::setPurchaseDate);
-            mapper.map(src->src.getDeliveryAddress(), CustomerOrderDto::setDeliveryAddress);
+            mapper.map(src->AddressMapper.toDto(src.getDeliveryAddress()), CustomerOrderDto::setDeliveryAddress);
             mapper.map(src->src.getListArticle().stream().map(ArticleMapper::toDto).collect(Collectors.toList()), CustomerOrderDto::setListArticleDto);
             
         });

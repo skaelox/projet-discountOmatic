@@ -11,8 +11,11 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Version;
+
+import org.hibernate.annotations.ManyToAny;
 
 @Entity
 public class CustomerOrder {
@@ -28,7 +31,7 @@ public class CustomerOrder {
     @Column(name = "customer_order_purchase_date")
     private Date purchaseDate;
     
-    @Column(name = "customer_order_delivery_address")
+    @ManyToOne
     private Address deliveryAddress;
     
     @ManyToMany

@@ -179,7 +179,7 @@ public class ViewController {
     }
     
     @GetMapping("/search")
-    public String searchArticleOrCategory(Model m, @RequestParam("source") String source) {
+    public String searchArticleOrCategory(Model m, @RequestParam("source") String source, @RequestParam("field") String search) {
         return "";
     }
     

@@ -18,7 +18,7 @@ public class CustomerOrderDto implements Serializable{
     
     private Date purchaseDate;
     
-    private Address deliveryAddress;
+    private AddressDto deliveryAddress;
     
     private List<ArticleDto> listArticleDto;
 
@@ -26,8 +26,10 @@ public class CustomerOrderDto implements Serializable{
         super();
     }
 
-    public CustomerOrderDto(long customerOrderId, CustomerDto customerDto, Date purchaseDate, Address deliveryAddress,
-            List<ArticleDto> listArticleDto) {
+    
+
+    public CustomerOrderDto(long customerOrderId, CustomerDto customerDto, Date purchaseDate,
+            AddressDto deliveryAddress, List<ArticleDto> listArticleDto) {
         super();
         this.customerOrderId = customerOrderId;
         this.customerDto = customerDto;
@@ -35,6 +37,20 @@ public class CustomerOrderDto implements Serializable{
         this.deliveryAddress = deliveryAddress;
         this.listArticleDto = listArticleDto;
     }
+
+
+
+    public static long getSerialversionuid() {
+        return serialVersionUID;
+    }
+
+
+
+    public void setDeliveryAddress(AddressDto deliveryAddress) {
+        this.deliveryAddress = deliveryAddress;
+    }
+
+
 
     public long getCustomerOrderId() {
         return customerOrderId;
@@ -58,14 +74,6 @@ public class CustomerOrderDto implements Serializable{
 
     public void setPurchaseDate(Date purchaseDate) {
         this.purchaseDate = purchaseDate;
-    }
-
-    public Address getDeliveryAddress() {
-        return deliveryAddress;
-    }
-
-    public void setDeliveryAddress(Address deliveryAddress) {
-        this.deliveryAddress = deliveryAddress;
     }
 
     public List<ArticleDto> getListArticleDto() {
