@@ -109,9 +109,7 @@ public class AdminServiceImpl implements AdminService{
 
 	@Override
 	public void deleteCustomerById(CustomerDto cDto) {
-		//TODO cfaire appel à la future methode search by name
-		long id =0;
-		customerRepository.deleteById(id);
+		customerRepository.deleteById(cDto.getCustomerId());
 		
 	}
 

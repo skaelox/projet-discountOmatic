@@ -3,6 +3,7 @@ package fr.dawan.discountomatic.beans;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -36,7 +37,7 @@ public class Customer {
     @Column(name = "customer_gender")
     private String gender;
     
-    @OneToOne(optional = false, cascade = CascadeType.ALL)
+    @OneToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "addressId", unique = true, nullable = false, updatable = false)
     private Address address;    
     

@@ -1,6 +1,5 @@
 package fr.dawan.discountomatic.forms;
 
-import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
@@ -130,14 +129,6 @@ public class UpdateAccountForm {
         this.nom = nom;
     }
 
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
 
     public String getPhone_number() {
         return phone_number;

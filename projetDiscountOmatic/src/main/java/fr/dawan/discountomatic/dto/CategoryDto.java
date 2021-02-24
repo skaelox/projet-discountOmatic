@@ -4,6 +4,7 @@ import java.util.List;
 
 public class CategoryDto {
 
+    private long categoryId;
 	private String name;
 	private String description;
 	
@@ -13,14 +14,31 @@ public class CategoryDto {
 		
 	}
 
-	public CategoryDto(String name, String description, List<ArticleDto> articles) {
-		super();
-		this.name = name;
-		this.description = description;
-		this.articles = articles;
-	}
+	
 
-	public String getName() {
+	public CategoryDto(long categoryId, String name, String description, List<ArticleDto> articles) {
+        super();
+        this.categoryId = categoryId;
+        this.name = name;
+        this.description = description;
+        this.articles = articles;
+    }
+
+
+
+    public long getCategoryId() {
+        return categoryId;
+    }
+
+
+
+    public void setCategoryId(long categoryId) {
+        this.categoryId = categoryId;
+    }
+
+
+
+    public String getName() {
 		return name;
 	}
 

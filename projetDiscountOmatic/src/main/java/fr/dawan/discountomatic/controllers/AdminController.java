@@ -68,10 +68,15 @@ public class AdminController {
 	 * différentes méthodes du crud
 	 */
 	
-	@GetMapping(value = "/category", produces = "application/json")
+	@GetMapping(value = "/categories", produces = "application/json")
 	public List<CategoryDto> getAllCategory() {
 		return adminService.getAllCategory();
 	} 
+	
+	@GetMapping(value = "/category", produces = "application/json")
+	public CategoryDto getCategoryById(@RequestParam("id") long id) {
+	    return adminService.findCategoryById(id);
+	}
 	
 	@PostMapping(value = "/category", consumes = "application/json" , produces = "application/json")
 	public CategoryDto saveCategory(@RequestBody CategoryDto cDto) {
@@ -101,9 +106,14 @@ public class AdminController {
 	 * différentes méthodes du crud
 	 */
 	
-	@GetMapping(value = "/customer", produces = "application/json")
+	@GetMapping(value = "/customers", produces = "application/json")
 	public List<CustomerDto> getAllCustomer() {
 		return adminService.getAllCustomer();
+	}
+	
+	@GetMapping(value = "/customer", produces = "application/json")
+	public CustomerDto getCustomerById(@RequestParam("id") long id) {
+	    return adminService.findCustomerById(id);
 	}
 	
 	@PostMapping(value = "/customer", consumes = "application/json" , produces = "application/json")

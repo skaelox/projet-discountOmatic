@@ -7,23 +7,23 @@ import fr.dawan.discountomatic.dto.CustomerDto;
 
 public class CustomerMapper {
     
-    private static ModelMapper mapper;
-    
-    public CustomerMapper() {
-        mapper = new ModelMapper();
-    }
-    
+    private static ModelMapper mapper  = new ModelMapper();
+
     public static CustomerDto toDto(Customer c) {
+        
+        System.out.println(c);
+        System.out.println(mapper);
         mapper.typeMap(Customer.class, CustomerDto.class).addMappings(mapper -> {
             mapper.map(src->src.getCustomerId(), CustomerDto::setCustomerId);
-           mapper.map(src->src.getFirstName(), CustomerDto::setFirstName);
-           mapper.map(src->src.getLastName(), CustomerDto::setLastName);
-           mapper.map(src->src.getPhoneNumber(), CustomerDto::setPhoneNumber);
-           mapper.map(src->src.getPassword(), CustomerDto::setPassword);
-           mapper.map(src->src.getMail(), CustomerDto::setMail);
-           mapper.map(src->src.getGender(), CustomerDto::setGender);
-           mapper.map(src->AddressMapper.toDto(src.getAddress()), CustomerDto::setAdress);
+            mapper.map(src->src.getFirstName(), CustomerDto::setFirstName);
+            mapper.map(src->src.getLastName(), CustomerDto::setLastName);
+            mapper.map(src->src.getPhoneNumber(), CustomerDto::setPhoneNumber);
+            mapper.map(src->src.getPassword(), CustomerDto::setPassword);
+            mapper.map(src->src.getMail(), CustomerDto::setMail);
+            mapper.map(src->src.getGender(), CustomerDto::setGender);
+            mapper.map(src->AddressMapper.toDto(src.getAddress()), CustomerDto::setAdress);
         });
+        System.out.println(mapper.map(c, CustomerDto.class));
         return mapper.map(c, CustomerDto.class);
     }
         

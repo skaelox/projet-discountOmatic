@@ -10,6 +10,7 @@ public class CategoryMapper {
 	public static CategoryDto toDto(Category c) {
 		ModelMapper m = new ModelMapper();
 		m.typeMap(Category.class, CategoryDto.class).addMappings(mapper -> {
+		    mapper.map(src -> src.getCategoryId(), CategoryDto::setCategoryId);
 			mapper.map(src -> src.getName(), CategoryDto::setName);
 			mapper.map(src -> src.getDescription(), CategoryDto::setDescription);
 			mapper.map(src -> src.getArticles(), CategoryDto::setArticles);

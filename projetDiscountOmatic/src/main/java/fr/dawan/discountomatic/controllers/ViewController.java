@@ -143,15 +143,17 @@ public class ViewController {
     @GetMapping("/updateaccount")
     public String updateAccount(Model m) {
         CustomerDto user = (CustomerDto) m.getAttribute("user");
+        //AddressDto address = adminController.getCustomerById(user.getCustomerId()).getAdress();
+        AddressDto address = user.getAdress();
         UpdateAccountForm updateAccount = new UpdateAccountForm();
         updateAccount.setPrenom(user.getFirstName());
         updateAccount.setNom(user.getLastName());
         updateAccount.setPhone_number(user.getPhoneNumber());
         updateAccount.setGender(user.getGender());
-//        updateAccount.setStreet(user.getAdress().getStreet());
-//        updateAccount.setCity(user.getAdress().getCity());
-//        updateAccount.setNumber(user.getAdress().getNumber());
-//        updateAccount.setCountry(user.getAdress().getCountry());
+        updateAccount.setStreet(address.getStreet());
+        updateAccount.setCity(address.getCity());
+        updateAccount.setNumber(address.getNumber());
+        updateAccount.setCountry(address.getCountry());
         m.addAttribute("createaccountform", updateAccount);
         return "updateaccount";
     }
@@ -165,6 +167,13 @@ public class ViewController {
         }
         m.addAttribute("error", "Article Introuvable");
         return "home    ";
+    }
+    
+    @GetMapping("/category")
+    public String showCategory(Model m, @RequestParam("id") long id) {
+        List<ArticleDto> articles = adminController.getCategoryById(id).getArticles();
+        m.addAttribute("articles",articles);
+        return "category";
     }
     
     @GetMapping("/addcart")
