@@ -5,6 +5,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+import fr.dawan.discountomatic.beans.Address;
 import fr.dawan.discountomatic.beans.Article;
 import fr.dawan.discountomatic.beans.Customer;
 
@@ -17,9 +18,23 @@ public class CustomerOrderDto implements Serializable{
     
     private Date purchaseDate;
     
-    private String deliveryAddress;
+    private Address deliveryAddress;
     
     private List<ArticleDto> listArticleDto;
+
+    public CustomerOrderDto() {
+        super();
+    }
+
+    public CustomerOrderDto(long customerOrderId, CustomerDto customerDto, Date purchaseDate, Address deliveryAddress,
+            List<ArticleDto> listArticleDto) {
+        super();
+        this.customerOrderId = customerOrderId;
+        this.customerDto = customerDto;
+        this.purchaseDate = purchaseDate;
+        this.deliveryAddress = deliveryAddress;
+        this.listArticleDto = listArticleDto;
+    }
 
     public long getCustomerOrderId() {
         return customerOrderId;
@@ -27,6 +42,14 @@ public class CustomerOrderDto implements Serializable{
 
     public void setCustomerOrderId(long customerOrderId) {
         this.customerOrderId = customerOrderId;
+    }
+
+    public CustomerDto getCustomerDto() {
+        return customerDto;
+    }
+
+    public void setCustomerDto(CustomerDto customerDto) {
+        this.customerDto = customerDto;
     }
 
     public Date getPurchaseDate() {
@@ -37,53 +60,23 @@ public class CustomerOrderDto implements Serializable{
         this.purchaseDate = purchaseDate;
     }
 
-    public String getDeliveryAddress() {
+    public Address getDeliveryAddress() {
         return deliveryAddress;
     }
 
-    public void setDeliveryAddress(String deliveryAddress) {
+    public void setDeliveryAddress(Address deliveryAddress) {
         this.deliveryAddress = deliveryAddress;
     }
 
-
-    public CustomerDto getCustomerDto() {
-		return customerDto;
-	}
-
-	public void setCustomerDto(CustomerDto customerDto) {
-		this.customerDto = customerDto;
-	}
-
-	public List<ArticleDto> getListArticleDto() {
-		return listArticleDto;
-	}
-
-	public void setListArticleDto(List<ArticleDto> listArticleDto) {
-		this.listArticleDto = listArticleDto;
-	}
-
-	public static long getSerialversionuid() {
-        return serialVersionUID;
+    public List<ArticleDto> getListArticleDto() {
+        return listArticleDto;
     }
-    
 
-	public CustomerOrderDto(long customerOrderId, CustomerDto customerDto, Date purchaseDate, String deliveryAddress,
-			List<ArticleDto> listArticleDto) {
-		super();
-		this.customerOrderId = customerOrderId;
-		this.customerDto = customerDto;
-		this.purchaseDate = purchaseDate;
-		this.deliveryAddress = deliveryAddress;
-		this.listArticleDto = listArticleDto;
-	}
-
-	public CustomerOrderDto() {
-        super();
+    public void setListArticleDto(List<ArticleDto> listArticleDto) {
+        this.listArticleDto = listArticleDto;
     }
 
 
 
-
-    
     
 }

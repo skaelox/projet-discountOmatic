@@ -61,29 +61,30 @@
             <form:errors class="small text-danger" path="phone_number"/> 
         </div>
         
-        <!-- Adress -->    
+        <!-- Adresse -->    
         <h2>Adresse</h2>
-        <div class="form-group">
-            <form:label class="form-label" path="street">Rue</form:label>
-            <form:input class="form-control" path="street" placeholder="Entrer votre n° de téléphone"/>
-            <form:errors class="small text-danger" path="street"/> 
-        </div>
         
         <div class="form-group">
             <form:label class="form-label" path="number">N°</form:label>
-            <form:input class="form-control" path="number" placeholder="Entrer votre n° de téléphone"/>
+            <form:input class="form-control" path="number" placeholder="Entrer votre n° de rue"/>
             <form:errors class="small text-danger" path="number"/> 
         </div>
         
         <div class="form-group">
+            <form:label class="form-label" path="street">Rue</form:label>
+            <form:input class="form-control" path="street" placeholder="Entrer votre rue"/>
+            <form:errors class="small text-danger" path="street"/> 
+        </div>
+        
+        <div class="form-group">
             <form:label class="form-label" path="city">Ville</form:label>
-            <form:input class="form-control" path="city" placeholder="Entrer votre n° de téléphone"/>
+            <form:input class="form-control" path="city" placeholder="Entrer votre ville"/>
             <form:errors class="small text-danger" path="city"/> 
         </div>
         
         <div class="form-group">
             <form:label class="form-label" path="country">Pays</form:label>
-            <form:input class="form-control" path="country" placeholder="Entrer votre n° de téléphone"/>
+            <form:input class="form-control" path="country" placeholder="Entrer votre pays"/>
             <form:errors class="small text-danger" path="country"/> 
         </div>
         <!-- Button -->

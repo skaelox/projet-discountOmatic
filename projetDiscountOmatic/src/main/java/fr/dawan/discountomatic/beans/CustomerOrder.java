@@ -29,7 +29,7 @@ public class CustomerOrder {
     private Date purchaseDate;
     
     @Column(name = "customer_order_delivery_address")
-    private String deliveryAddress;
+    private Address deliveryAddress;
     
     @ManyToMany
     @JoinTable(name="Order_Customer", joinColumns = {@JoinColumn(name="articleId")}, inverseJoinColumns = {@JoinColumn(name="customerOrderId")})
@@ -65,11 +65,11 @@ public class CustomerOrder {
         this.purchaseDate = purchaseDate;
     }
 
-    public String getDeliveryAddress() {
+    public Address getDeliveryAddress() {
         return deliveryAddress;
     }
 
-    public void setDeliveryAddress(String deliveryAddress) {
+    public void setDeliveryAddress(Address deliveryAddress) {
         this.deliveryAddress = deliveryAddress;
     }
 
@@ -93,7 +93,7 @@ public class CustomerOrder {
         super();
     }
 
-	public CustomerOrder(long customerOrderId, Customer customer, Date purchaseDate, String deliveryAddress,
+	public CustomerOrder(long customerOrderId, Customer customer, Date purchaseDate, Address deliveryAddress,
 			List<Article> listArticle, int version) {
 		super();
 		this.customerOrderId = customerOrderId;
