@@ -26,8 +26,10 @@ import fr.dawan.discountomatic.beans.Customer;
 import fr.dawan.discountomatic.dto.AddressDto;
 import fr.dawan.discountomatic.dto.ArticleDto;
 import fr.dawan.discountomatic.dto.CustomerDto;
+import fr.dawan.discountomatic.dto.CustomerOrderDto;
 import fr.dawan.discountomatic.forms.CreateAccountForm;
 import fr.dawan.discountomatic.forms.LoginForm;
+import fr.dawan.discountomatic.forms.OrderForm;
 import fr.dawan.discountomatic.forms.UpdateAccountForm;
 
 @Controller
@@ -180,7 +182,15 @@ public class ViewController {
     
     @GetMapping("/search")
     public String searchArticleOrCategory(Model m, @RequestParam("source") String source, @RequestParam("field") String search) {
-        return "";
+        if(source == "category") {
+            
+        }
+        if(source == "article") {
+            List<ArticleDto> result = adminController.getArticleByName(search);
+            m.addAttribute("result", result);
+            return "home";
+        }
+        return "home";
     }
     
     @GetMapping("/addcart")
@@ -200,6 +210,37 @@ public class ViewController {
     @GetMapping("/viewcart")
     public String viewCart(Model m) {
         return "cart";
+    }
+    
+    @GetMapping("/pay")
+    public String pay(Model m) {
+        if((boolean) m.getAttribute("isConnected")) {
+        OrderForm orderForm = new OrderForm();        
+        m.addAttribute("orderform", orderForm);
+        
+        return "orderform";
+        }
+        return "redirect:/login";
+    }
+    
+    @PostMapping("/pay")
+    public String payAccept(@Valid @ModelAttribute("orderform") OrderForm orderForm, Model m) {
+        CustomerOrderDto order = new CustomerOrderDto();
+        AddressDto address = new AddressDto();
+        
+        CustomerDto user = (CustomerDto) m.getAttribute("user");
+        List<ArticleDto> articles = (List<ArticleDto>) m.getAttribute("cart");
+        address.setCity(orderForm.getCity());
+        address.setCountry(orderForm.getCountry());
+        address.setNumber(orderForm.getNumber());
+        address.setStreet(orderForm.getStreet());
+        
+        order.setCustomerDto(user);
+        order.setListArticleDto(articles);
+        order.setDeliveryAddress(address);
+        order.setPurchaseDate(null);
+        m.addAttribute("cart", new ArrayList<ArticleDto>());
+        return "home";
     }
     
     @ModelAttribute("user")

@@ -10,8 +10,8 @@
     <p class="text-center"> Votre panier est vide. </p>
 </c:if>
 <c:if test="${not empty sessionScope.cart}">
-<table class="table">
-    <thead style="background-color: #ECF0F1">
+<table class="table mt-4">
+    <thead style="background-color: #517DAF">
         <tr>
             <th scopes="col"> </th>
             <th scopes="col">Article </th>
@@ -19,6 +19,7 @@
         </tr>
     </thead>
     <tbody>
+        <c:set var="total" value="0" />
         <c:forEach items="${sessionScope.cart}" var="article">
 		    <tr>
 		          <th scopes="row"><img class="card-img-top" style="width: 50px"
@@ -26,9 +27,20 @@
 		          <th scopes="row">${article.name}</th>
 		          <th scopes="row">${article.price}</th>
 		    </tr>
+		    <c:set var="total" value="${total + article.price}" />
 		</c:forEach>
+		<tr>
+		      <td></td>
+		      <td><p class="text-right">Total:</p></td>
+		      <td>${total}</td>
+		</tr>
+		<tr><td></td>
+              <td></td>
+              <td><a href="/pay" class="text-center"><button class="btn btn-light mt-5 m-3 rounded-pill border border-2">Passer commande.</button></a></td>
+        </tr>
     </tbody>
 </table>
 </c:if>
+
 </div>
 <c:import url="footer.jsp"/>

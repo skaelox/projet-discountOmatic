@@ -30,14 +30,19 @@ public class AdminController {
 	 * différentes méthodes du crud
 	 */
 	
-	@GetMapping(value = "/article", produces = "application/json")
+	@GetMapping(value = "/articles", produces = "application/json")
 	public List<ArticleDto> getAllArticle() {
 		return adminService.getAllArticle();
 	}
 	
-	@GetMapping(value = "/",produces = "application/json")
+	@GetMapping(value = "/article",produces = "application/json")
     public ArticleDto getArticleById(@RequestParam long id) {
 	    return adminService.findArticleById(id);
+	}
+	
+	@GetMapping(value = "/article/searchbyname", produces = "application/json")
+	public List<ArticleDto> getArticleByName(@RequestParam("name") String name) {
+	    return adminService.findArticleByName(name);
 	}
 	
 	@PostMapping(value = "/article", consumes = "application/json" , produces = "application/json")

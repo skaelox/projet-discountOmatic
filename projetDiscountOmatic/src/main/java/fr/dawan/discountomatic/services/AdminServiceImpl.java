@@ -54,11 +54,15 @@ public class AdminServiceImpl implements AdminService{
 		Optional<Article> opt = articleRepository.findById(id);
 		return opt.isPresent() ? ArticleMapper.toDto(opt.get()) : null;
 	}
+	
+	@Override
+    public List<ArticleDto> findArticleByName(String name) {
+	    return articleRepository.findArticleByName(name).stream().map(ArticleMapper::toDto).collect(Collectors.toList());
+	}
 
 	@Override
 	public void deleteArticleById(ArticleDto a) {
-		Article res = articleRepository.findArticleByName(a.getName());;
-		articleRepository.deleteById(res.getArticleId());
+		articleRepository.deleteById(a.getArticleId());
 		
 	}
 

@@ -1,6 +1,8 @@
 package fr.dawan.discountomatic.repositories;
 
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -12,5 +14,5 @@ import fr.dawan.discountomatic.beans.Article;
 public interface ArticleRepository extends JpaRepository<Article, Long> {
 
 	@Query(value = "FROM Article a WHERE a.name LIKE :search")
-    Article findArticleByName(@Param("search") String searchName);
+    List<Article> findArticleByName(@Param("search") String searchName);
 }

@@ -18,7 +18,7 @@
 <div class="card mx-auto" style="max-width: 1500px">
 	<h2>Informations client</h2>
 		<table class="table">
-		    <thead style="background-color: #ECF0F1">
+		    <thead style="background-color: #517DAF">
 		        <tr>
 		            <th>Prénom</th>
 		            <th>Nom</th>
@@ -30,12 +30,12 @@
 		    </thead>
 		    <tbody>
 		        <tr>
-		            <th>${sessionScope.user.firstName}</th>
-		            <th>${sessionScope.user.lastName}</th>
-		            <th>${sessionScope.user.adress.number}</th>
-		            <th>${sessionScope.user.adress.street}</th>
-		            <th>${sessionScope.user.adress.city}</th>
-		            <th>${sessionScope.user.adress.country}</th>
+		            <td>${sessionScope.user.firstName}</td>
+		            <td>${sessionScope.user.lastName}</td>
+		            <td>${sessionScope.user.adress.number}</td>
+		            <td>${sessionScope.user.adress.street}</td>
+		            <td>${sessionScope.user.adress.city}</td>
+		            <td>${sessionScope.user.adress.country}</td>
 		        </tr>
 		    </tbody>
 		</table>
@@ -45,30 +45,45 @@
  -->
  	
 	<h2>Informations du lieu de livraison</h2>
-    <form:form action="/#" method="post" modelAttribute="createorderform">
+    <form:form action="/pay" method="post" modelAttribute="orderform">
         <div class="form-group">
-            <form:label class="form-label" path="customerordernumber">N° de rue</form:label>
-            <form:input class="form-control" path="customerordernumber" placeholder="Entrer votre n° de rue "/>
-            <form:errors class="small text-danger" path="customerordernumber"/> 
+            <form:label class="form-label" path="number">N° de rue</form:label>
+            <form:input class="form-control" path="number" placeholder="Entrer votre n° de rue "/>
+            <form:errors class="small text-danger" path="number"/> 
         </div>
         
         <div id="container">
             <div class="form-group">
-            <form:label class="form-label" path="customerorderstreet">Rue</form:label>
-            <form:input class="form-control" path="customerorderstreet" placeholder="Entrer votre rue"/>
-            <form:errors class="small text-danger" path="customerorderstreet"/> 
+            <form:label class="form-label" path="street">Rue</form:label>
+            <form:input class="form-control" path="street" placeholder="Entrer votre rue"/>
+            <form:errors class="small text-danger" path="street"/> 
         </div>
         
         <div class="form-group">
-            <form:label class="form-label" path="customerordercity">Ville</form:label>
-            <form:input class="form-control" path="customerordercity" placeholder="Entrer votre ville"/>
-            <form:errors class="small text-danger" path="customerordercity"/> 
+            <form:label class="form-label" path="city">Ville</form:label>
+            <form:input class="form-control" path="city" placeholder="Entrer votre ville"/>
+            <form:errors class="small text-danger" path="city"/> 
         </div>
         
         <div class="form-group">
-            <form:label class="form-label" path="customerordercountry">Pays</form:label>
-            <form:input class="form-control" path="customerordercountry" placeholder="Entrer votre pays"/>
-            <form:errors class="small text-danger" path="customerordercountry"/> 
+            <form:label class="form-label" path="country">Pays</form:label>
+            <form:input class="form-control" path="country" placeholder="Entrer votre pays"/>
+            <form:errors class="small text-danger" path="country"/> 
+        </div>
+        <div class="form-group">
+            <form:label class="form-label" path="numCb">Numéros de carte de crédit</form:label>
+            <form:input class="form-control" path="numCb" placeholder="Entrer le numéros de carte de crédit"/>
+            <form:errors class="small text-danger" path="numCb"/> 
+        </div>
+        <div class="form-group">
+            <form:label class="form-label" path="ownerCb">Propiétaire de la carte de crédit</form:label>
+            <form:input class="form-control" path="ownerCb" placeholder="Entrer propiétaire de la carte de crédit"/>
+            <form:errors class="small text-danger" path="ownerCb"/> 
+        </div>
+        <div class="form-group">
+            <form:label class="form-label" path="cryptoCb">Cyptocode</form:label>
+            <form:input class="form-control" path="cryptoCb" placeholder="Entrer votre cyptocode"/>
+            <form:errors class="small text-danger" path="cryptoCb"/> 
         </div>
         </div>
     </form:form>

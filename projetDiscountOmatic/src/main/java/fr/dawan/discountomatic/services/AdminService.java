@@ -11,6 +11,7 @@ public interface AdminService {
 
 	List<ArticleDto> getAllArticle();
 	ArticleDto findArticleById(long id);
+	List<ArticleDto> findArticleByName(String name);
 	void deleteArticleById(ArticleDto a);
 	ArticleDto saveOrUpdateArticle(ArticleDto aDto);
 	
