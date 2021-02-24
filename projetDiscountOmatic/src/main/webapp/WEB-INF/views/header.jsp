@@ -11,6 +11,7 @@
 <c:url value="/webjars/bootstrap/4.5.3/css/bootstrap.min.css"
 	var="urlbootstrap" />
 <link rel="stylesheet" href="${urlbootstrap}" />
+ <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 <title><c:out value='test' /></title>
 </head>
 <body>
@@ -29,6 +30,32 @@
 				<li class="nav-item"><a class="nav-link" href='/'>Accueil</a></li>			
 			</ul>
 		</div>
+		
+		<div class="container">
+	<form action="/recherche/" method="get">
+		<fieldset>
+			<div class="input-group" style="width: 200%">
+				<div class="input-group-prepend">
+					<select id="oCategorie" name="oCategorie"
+						class="custom-select bg-primary text-light">
+						<option selected="selected" value="0">Catégorie</option>
+						<option value="1">Articles</option>
+						<option value="2">Titre</option>
+						<option value="3">Prix</option>
+					</select>
+				</div>
+				<input id="oSaisie" name="oSaisie" type="text" class="form-control"
+					aria-label="Saisie de mots clés" placeholder="Mot(s) clé(s)"
+					required="required">
+				<div class="input-group-append">
+					<button type="submit" class="btn btn-primary">
+						<span class="fa fa-search text-center"></span>
+					</button>
+				</div>
+			</div>
+		</fieldset>
+	</form>
+</div>
 		<a class="btn btn-warning" href="/viewcart" >
           Panier
         </a>

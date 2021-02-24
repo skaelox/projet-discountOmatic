@@ -27,8 +27,10 @@
 			<h3 class="card-title">
 				<c:out value="${article.description}" />
 			</h3>
-			<a href='<c:url value="/"/>' class="btn btn-light mt-5 ml-4">Retour</a>
-			<a href="#" class="btn btn-warning mt-5 mr-4">Panier</a>
+			<a href='<c:url value="/"/>'
+					class="btn btn-light mt-5 m-3 rounded-pill">Retour.</a> 
+			<a href='<c:url value="/addcart?id=${article.articleId}"/>'
+					class="btn btn-warning mt-5 m-3 rounded-pill">Panier</a>
 		</div>
 	</div>
 </div>
