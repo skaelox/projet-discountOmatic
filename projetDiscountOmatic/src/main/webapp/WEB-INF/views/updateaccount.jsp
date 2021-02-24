@@ -33,27 +33,7 @@
             <form:label path="nom">Nom</form:label>
             <form:input class="form-control" path="nom" placeholder="Entrer votre nom"/>
             <form:errors class="small text-danger" path="nom"/>
-        </div>        
-        <div class="form-group">
-            <form:label path="email">Adresse e-mail</form:label> 
-            <form:input class="form-control" path="email" type="email" placeholder="Entrer votre adresse mail"/>
-            <form:errors class="text-danger small" path="email"/>
-        </div>        
-        <div class="form-group">
-            <form:label class="form-label" path="confirm_email">Confirmation de l'adresse mail :</form:label> 
-            <form:input class="form-control" path="confirm_email" type="email" placeholder="Entrer de nouveau votre adresse mail"/>
-            <form:errors class="text-danger small" path="confirm_email"/>
-        </div>       
-        <div class="form-group">
-            <form:label class="form-label" path="password">Mot de passe :</form:label>
-            <form:password class="form-control" path="password" placeholder="Entrer votre mot de passe"/>
-            <form:errors class="small text-danger" path="password"/>
-        </div>       
-        <div class="form-group">
-            <form:label class="form-label" path="confirm_password">Confirmation du mot de passe :</form:label>
-            <form:password class="form-control" path="confirm_password" placeholder="Entrer de nouveau le mot de passe"/>
-            <form:errors class="small text-danger" path="confirm_password"/>
-        </div>        
+        </div>                      
         <div class="form-group">
             <form:label class="form-label" path="phone_number">N° de téléphone :</form:label>
             <form:input class="form-control" path="phone_number" placeholder="Entrer votre n° de téléphone"/>
