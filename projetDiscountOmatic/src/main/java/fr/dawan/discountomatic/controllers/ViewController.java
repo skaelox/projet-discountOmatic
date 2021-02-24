@@ -28,6 +28,7 @@ import fr.dawan.discountomatic.dto.ArticleDto;
 import fr.dawan.discountomatic.dto.CustomerDto;
 import fr.dawan.discountomatic.forms.CreateAccountForm;
 import fr.dawan.discountomatic.forms.LoginForm;
+import fr.dawan.discountomatic.forms.UpdateAccountForm;
 
 @Controller
 @SessionAttributes({"user","isConnected","cart"})
@@ -128,6 +129,33 @@ public class ViewController {
         return null;
     }
     
+    @GetMapping("/myaccount")
+    public String viewAccount(Model m) {
+        CustomerDto user = (CustomerDto) m.getAttribute("user");
+        if(user != null) {
+            return "account";
+        } else {
+            m.addAttribute("loginform", new LoginForm());
+            return "login";
+        }
+    }
+    
+    @GetMapping("/updateaccount")
+    public String updateAccount(Model m) {
+        CustomerDto user = (CustomerDto) m.getAttribute("user");
+        UpdateAccountForm updateAccount = new UpdateAccountForm();
+        updateAccount.setPrenom(user.getFirstName());
+        updateAccount.setNom(user.getLastName());
+        updateAccount.setPhone_number(user.getPhoneNumber());
+        updateAccount.setGender(user.getGender());
+//        updateAccount.setStreet(user.getAdress().getStreet());
+//        updateAccount.setCity(user.getAdress().getCity());
+//        updateAccount.setNumber(user.getAdress().getNumber());
+//        updateAccount.setCountry(user.getAdress().getCountry());
+        m.addAttribute("createaccountform", updateAccount);
+        return "updateaccount";
+    }
+    
     @GetMapping("/showarticle")
     public String showArticle(@RequestParam long id, Model m) {
         ArticleDto article = adminController.getArticleById(id);
@@ -136,7 +164,7 @@ public class ViewController {
             return "detail";
         }
         m.addAttribute("error", "Article Introuvable");
-        return "/";
+        return "home    ";
     }
     
     @GetMapping("/addcart")
