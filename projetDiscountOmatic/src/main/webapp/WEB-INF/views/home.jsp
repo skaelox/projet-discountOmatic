@@ -35,7 +35,7 @@
 		<div class="card-body">
 			<h5 class="card-title">Nos pc portables</h5>
 			<p class="card-text">Voici une sélection de nos pc portables</p>
-			<a href="#" class="btn btn-light mt-5 ml-4">Voir catégorie</a>
+			<a href='<c:url value="/category?id=1"/>' class="btn btn-light mt-5 ml-4">Voir catégorie</a>
 		</div>
 	</div>
 
@@ -45,7 +45,7 @@
 			<h5 class="card-title">PC de bureau</h5>
 			<p class="card-text">Vous cherchez un pc de bureau ? Visitez nos
 				catégories</p>
-			<a href="#" class="btn btn-light mt-5 ml-4">Voir catégorie</a>
+			<a href='<c:url value="/category?id=2"/>' class="btn btn-light mt-5 ml-4">Voir catégorie</a>
 		</div>
 	</div>
 
@@ -54,7 +54,7 @@
 		<div class="card-body">
 			<h5 class="card-title">Nos écrans</h5>
 			<p class="card-text">Petite sélection de nos écran</p>
-			<a href="#" class="btn btn-light mt-5 ml-4">Voir catégorie</a>
+			<a href='<c:url value="/category?id=3"/>' class="btn btn-light mt-5 ml-4">Voir catégorie</a>
 		</div>
 	</div>
 
@@ -63,7 +63,7 @@
 		<div class="card-body">
 			<h5 class="card-title">Besoin d'un clavier ou d'une souris sans fil? Visitez notre catalogue </h5>
 			<p class="card-text">Claviers & Souris</p>
-			<a href="#" class="btn btn-light mt-5 ml-4">Visiter</a>
+			<a href='<c:url value="/category?id=4"/>' class="btn btn-light mt-5 ml-4">Visiter</a>
 		</div>
 	</div>
 </div>
@@ -83,7 +83,7 @@
 			<img class="card-img-top" style="width: 18rem"
 				src='/imgArticles/<c:out value="${article.picture}"/>' alt="Logo" />
 
-			<div class="card-body" style="background-color: #ECF0F1">
+			<div class="card-body">
 				<h6 class="card-title" style="color: #154360">
 					<c:out value="${article.name}" />
 				</h6>
@@ -93,7 +93,7 @@
 						<c:out value="${article.price}" />
 						€
 					</h6></b> <a href='<c:url value="/showarticle?id=${article.articleId}"/>'
-					class="btn btn-light mt-5 m-3 rounded-pill"><svg
+					class="btn btn-light mt-5 m-3 rounded-pill border border-2"><svg
 						xmlns="http://www.w3.org/2000/svg" width="50" height="20"
 						fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
   <path

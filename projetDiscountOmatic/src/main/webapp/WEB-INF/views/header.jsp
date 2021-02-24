@@ -15,8 +15,8 @@
 <title><c:out value='test' /></title>
 </head>
 <body>
-	<header
-		class="navbar navbar-expand-lg sticky-top mb-4 navbar-dark" style="background-color: #ECF0F1">
+	<header>
+		<nav class="navbar navbar-expand-lg sticky-top" style="background-color: #517DAF">
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
 			data-target="#navbarSupportedContent"
 			aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -87,5 +87,6 @@
 		  
 		
 		</div>
+		</nav>
 	</header>
-	<main class="container-fluid">
+	<main class="container-fluid" style="background-color: #ECF0F1">
