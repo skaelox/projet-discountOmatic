@@ -15,8 +15,8 @@
 <title><c:out value='test' /></title>
 </head>
 <body>
-	<header>
-		<nav class="navbar navbar-expand-lg sticky-top" style="background-color: #517DAF">
+	<header class="sticky-top">
+		<nav class="navbar navbar-expand-lg" style="background-color: #517DAF">
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
 			data-target="#navbarSupportedContent"
 			aria-controls="navbarSupportedContent" aria-expanded="false"
