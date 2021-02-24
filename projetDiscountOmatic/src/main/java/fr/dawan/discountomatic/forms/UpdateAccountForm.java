@@ -16,13 +16,6 @@ public class UpdateAccountForm {
     @Size(min = 2, max = 50)
     private String nom;
     
-
-    @Size(min = 6, max = 40)
-    private String password;
-    
-    @Size(min = 2, max = 40)
-    private String confirm_password;
-    
     @NotEmpty
     @Size(min = 2, max = 40)
     private String phone_number;
@@ -49,25 +42,22 @@ public class UpdateAccountForm {
     
     
 
-
-
     public UpdateAccountForm(@NotEmpty String gender, @NotEmpty @Size(min = 2, max = 50) String prenom,
-            @NotEmpty @Size(min = 2, max = 50) String nom, @Size(min = 6, max = 40) String password,
-            @Size(min = 2, max = 40) String confirm_password, @NotEmpty @Size(min = 2, max = 40) String phone_number,
+            @NotEmpty @Size(min = 2, max = 50) String nom, @NotEmpty @Size(min = 2, max = 40) String phone_number,
             @NotEmpty @Size(min = 2, max = 40) String street, @NotEmpty @Size(min = 1, max = 40) String number,
             @NotEmpty @Size(min = 2, max = 40) String city, @NotEmpty @Size(min = 2, max = 40) String country) {
         super();
         this.gender = gender;
         this.prenom = prenom;
         this.nom = nom;
-        this.password = password;
-        this.confirm_password = confirm_password;
         this.phone_number = phone_number;
         this.street = street;
         this.number = number;
         this.city = city;
         this.country = country;
     }
+
+
 
     public String getStreet() {
         return street;
@@ -115,15 +105,6 @@ public class UpdateAccountForm {
         this.country = country;
     }
 
-
-
-    public String getConfirm_password() {
-        return confirm_password;
-    }
-
-    public void setConfirm_password(String confirm_password) {
-        this.confirm_password = confirm_password;
-    }
 
     public String getGender() {
         return gender;
