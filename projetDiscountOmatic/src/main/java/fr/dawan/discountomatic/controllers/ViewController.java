@@ -172,8 +172,15 @@ public class ViewController {
     @GetMapping("/category")
     public String showCategory(Model m, @RequestParam("id") long id) {
         List<ArticleDto> articles = adminController.getCategoryById(id).getArticles();
+        String nameCategory =  adminController.getCategoryById(id).getName();
+        m.addAttribute("namecategory",nameCategory);
         m.addAttribute("articles",articles);
         return "category";
+    }
+    
+    @GetMapping("/search")
+    public String searchArticleOrCategory(Model m, @RequestParam("source") String source) {
+        return "";
     }
     
     @GetMapping("/addcart")
