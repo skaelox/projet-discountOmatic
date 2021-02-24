@@ -16,7 +16,7 @@
 </head>
 <body>
 	<header
-		class="navbar navbar-expand-lg sticky-top mb-4 navbar-dark bg-dark">
+		class="navbar navbar-expand-lg sticky-top mb-4 navbar-dark" style="background-color: #ECF0F1">
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
 			data-target="#navbarSupportedContent"
 			aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -26,8 +26,8 @@
 		<a class="navbar-brand" href="/"></a>
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav mr-auto">
-				<li class="nav-item"><a class="nav-link" href='/'>DiscountOmatic</a></li>
-				<li class="nav-item"><a class="nav-link" href='/'>Accueil</a></li>			
+				<li class="nav-item"><a class="nav-link text-dark" href='/'>DiscountOmatic</a></li>
+				<li class="nav-item"><a class="nav-link text-dark" href='/'>Accueil</a></li>			
 			</ul>
 		</div>
 		
@@ -71,9 +71,8 @@
 		        </c:if>
 		        <c:if test="${not empty sessionScope.isConnected && sessionScope.isConnected}">
 		        <p>${sessionScope.user.firstName}</p>
-                <a class=dropdown-item href='#'>Voir mon profile</a>
+                <a class=dropdown-item href='/account'>Voir mon profile</a>
                 <a class=dropdown-item href='/logout'>Logout</a>
-                <a class=dropdown-item href='#'>Voir mon profile</a>
                 </c:if>
 			</div>
 		  
