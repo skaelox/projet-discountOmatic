@@ -30,40 +30,40 @@
 <!-- Catégories -->
 <hr>
 <div class="row">
-	<div class="card mx-auto" style="width: 20rem;">
-		<img src="images/pcPortable.jpg" class="card-img-top" alt="...">
+	<div class="card mx-auto shadow p-3 mb-5 bg-body rounded" style="width: 20rem;">
+		<img src="images/pcPortable2.jpg" class="card-img-top" alt="...">
 		<div class="card-body">
 			<h5 class="card-title">Nos pc portables</h5>
 			<p class="card-text">Voici une sélection de nos pc portables</p>
-			<a href='<c:url value="/category?id=1"/>' class="btn btn-light mt-5 ml-4">Voir catégorie</a>
+			<a href='<c:url value="/category?id=1"/>' class="btn btn-light mt-5 ml-4 rounded">Voir la catégorie</a>
 		</div>
 	</div>
 
-	<div class="card mx-auto" style="width: 20rem;">
+	<div class="card mx-auto shadow p-3 mb-5 bg-body rounded" style="width: 20rem;">
 		<img src="images/pcBureau.png" class="card-img-top" alt="...">
 		<div class="card-body">
 			<h5 class="card-title">PC de bureau</h5>
 			<p class="card-text">Vous cherchez un pc de bureau ? Visitez nos
 				catégories</p>
-			<a href='<c:url value="/category?id=2"/>' class="btn btn-light mt-5 ml-4">Voir catégorie</a>
+			<a href='<c:url value="/category?id=2"/>' class="btn btn-light mt-5 ml-4 rounded">Voir la catégorie</a>
 		</div>
 	</div>
 
-	<div class="card mx-auto" style="width: 20rem;">
+	<div class="card mx-auto shadow p-3 mb-5 bg-body rounded" style="width: 20rem;">
 		<img src="images/ecran.jpg" class="card-img-top" alt="...">
 		<div class="card-body">
 			<h5 class="card-title">Nos écrans</h5>
 			<p class="card-text">Petite sélection de nos écran</p>
-			<a href='<c:url value="/category?id=3"/>' class="btn btn-light mt-5 ml-4">Voir catégorie</a>
+			<a href='<c:url value="/category?id=3"/>' class="btn btn-light mt-5 ml-4 rounded">Voir la catégorie</a>
 		</div>
 	</div>
 
-	<div class="card mx-auto" style="width: 20rem;">
+	<div class="card mx-auto shadow p-3 mb-5 bg-body rounded" style="width: 20rem;">
 		<img src="images/autres.jpg" class="card-img-top" alt="...">
 		<div class="card-body">
 			<h5 class="card-title">Besoin d'un clavier ou d'une souris sans fil? Visitez notre catalogue </h5>
 			<p class="card-text">Claviers & Souris</p>
-			<a href='<c:url value="/category?id=4"/>' class="btn btn-light mt-5 ml-4">Visiter</a>
+			<a href='<c:url value="/category?id=4"/>' class="btn btn-light mt-5 ml-4 rounded">Voir la catégorie</a>
 		</div>
 	</div>
 </div>
@@ -74,7 +74,10 @@
 <!-- Affichage des articles -->
 <div>
 
-<h1 class="text-center text-dark">Catalogue</h1>
+<div class="container-fluid" style="background-color: #517DAF">
+<b><h1 class="text-center text-white">Catalogue</h1></b>
+</div>
+
 </div>
 <div class="row">
 	<c:forEach items="${articleArray}" var="article">
@@ -93,7 +96,7 @@
 						<c:out value="${article.price}" />
 						€
 					</h6></b> <a href='<c:url value="/showarticle?id=${article.articleId}"/>'
-					class="btn btn-light mt-5 m-3 rounded-pill border border-2"><svg
+					class="btn btn-light mb-2 m-3 rounded-pill border border-2"><svg
 						xmlns="http://www.w3.org/2000/svg" width="50" height="20"
 						fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
   <path
@@ -101,7 +104,7 @@
   <path
 							d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z" />
 </svg></a> <a href='<c:url value="/addcart?id=${article.articleId}"/>'
-					class="btn btn-warning mt-5 m-3 rounded-pill"><svg
+					class="btn btn-warning mb-2 m-3 rounded-pill"><svg
 						xmlns="http://www.w3.org/2000/svg" width="15" height="16"
 						fill="currentColor" class="bi bi-cart4" viewBox="0 0 16 16">
   <path

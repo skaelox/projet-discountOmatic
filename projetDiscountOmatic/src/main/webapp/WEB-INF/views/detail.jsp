@@ -10,13 +10,13 @@
 <h3 class="text-center"><b><c:out value="${article.name}"/></b></h3>
 <div class="row">
 
-<img class="card-img-top  mx-auto shadow p-3 mb-5 bg-body rounded"
+<img class="card-img-top  mx-auto shadow"
 			src='/imgArticles/<c:out value="${article.picture}"/>' alt="Logo"
 			style="max-width: 30%" />
 
 
 
-	<div class="card mx-auto mt-5 shadow p-3 mb-5 bg-body rounded w-50 p-3" style="background-color: #EBF5FB ">
+	<div class="card mx-auto mt-5 shadow p-3 mb-5 rounded w-50 p-3 ">
 		
 
 		<div class="card-body">
@@ -28,7 +28,7 @@
 				<c:out value="${article.description}" />
 			</h3>
 			<a href='<c:url value="/"/>'
-					class="btn btn-light mt-5 m-3 rounded-pill">Retour.</a> 
+					class="btn btn-light mt-5 m-3 rounded-pill">Retour</a> 
 			<a href='<c:url value="/addcart?id=${article.articleId}"/>'
 					class="btn btn-warning mt-5 m-3 rounded-pill">Panier</a>
 		</div>
