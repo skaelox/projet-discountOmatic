@@ -9,7 +9,7 @@
 <h1>Modification du Profil</h1>
 
 <!-- Formulaire d'inscription -->
-<form:form action="/signin" method="post" modelAttribute="createaccountform">
+<form:form action="/account" method="post" modelAttribute="createaccountform">
     <div id="container">
 
         <!-- Radio button -->
